@@ -10,7 +10,7 @@ if (NOT WITH_NODOS_WORKSPACE)
 endif()
 
 nos_find_sdk("1.2.0" NOS_PLUGIN_SDK_TARGET NOS_SUBSYSTEM_SDK_TARGET NOS_SDK_DIR)
-set(FLATC_EXECUTABLE ${NOS_SDK_DIR}/bin/flatc)
+set(FLATC_EXECUTABLE ${NOS_SDK_DIR}/bin/flatc${CMAKE_EXECUTABLE_SUFFIX})
 
 # Dependencies
 nos_get_module("nos.sys.vulkan" "5.3" NOS_SYS_VULKAN_TARGET_5_3)
