@@ -13,13 +13,13 @@ nos_find_sdk("1.2.0" NOS_PLUGIN_SDK_TARGET NOS_SUBSYSTEM_SDK_TARGET NOS_SDK_DIR)
 set(FLATC_EXECUTABLE ${NOS_SDK_DIR}/bin/flatc${CMAKE_EXECUTABLE_SUFFIX})
 
 # Dependencies
-nos_get_module("nos.sys.vulkan" "5.7" NOS_SYS_VULKAN_TARGET_5_3)
+nos_get_module("nos.sys.vulkan" "5.8" NOS_SYS_VULKAN_TARGET_5_8)
 
 # Schemas
 nos_generate_flatbuffers("${CMAKE_CURRENT_SOURCE_DIR}/Config" "${CMAKE_CURRENT_SOURCE_DIR}/Source" "cpp" "${NOS_SDK_DIR}/types" nosWebcam_generated)
 
 set(wmf_libs ole32.lib mf.lib mfuuid.lib mfreadwrite.lib Shlwapi.lib mfplat.lib)
-list(APPEND DEPENDENCIES ${NOS_SYS_VULKAN_TARGET_5_3} ${NOS_PLUGIN_SDK_TARGET} ${wmf_libs} nosWebcam_generated)
+list(APPEND DEPENDENCIES ${NOS_SYS_VULKAN_TARGET_5_8} ${NOS_PLUGIN_SDK_TARGET} ${wmf_libs} nosWebcam_generated)
 
 nos_add_plugin("nosWebcam" "${DEPENDENCIES}" "${INCLUDE_FOLDERS}")
 set_target_properties(nosWebcam PROPERTIES CXX_STANDARD 23)
