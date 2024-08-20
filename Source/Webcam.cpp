@@ -32,41 +32,25 @@ enum WebcamNodes : int
 nosResult RegisterWebcamReader(nosNodeFunctions* function);
 nosResult RegisterWebcamStream(nosNodeFunctions* function);
 
-extern "C"
+struct WebcamPluginFunctions : nos::PluginFunctions
 {
-NOSAPI_ATTR nosResult NOSAPI_CALL nosExportNodeFunctions(size_t* outCount, nosNodeFunctions** outFunctions)
-{
-	*outCount = (size_t)(WebcamNodes::Count);
-	if (!outFunctions)
-		return NOS_RESULT_SUCCESS;
-
-	WebcamStreamManager::Start();
-
-#define GEN_CASE_NODE(name)				\
-	case WebcamNodes::name: {					\
-		auto ret = Register##name(node);	\
-		if (NOS_RESULT_SUCCESS != ret)		\
-			return ret;						\
-		break;								\
-	}
-
-	for (int i = 0; i < WebcamNodes::Count; ++i)
+	nosResult ExportNodeFunctions(size_t& outSize, nosNodeFunctions** outList) override
 	{
-		auto node = outFunctions[i];
-		switch ((WebcamNodes)i) {
-			default:
-				break;
-			GEN_CASE_NODE(WebcamReader)
-			GEN_CASE_NODE(WebcamStream)
-		}
+		outSize = static_cast<size_t>(WebcamNodes::Count);
+		if (!outList)
+			return NOS_RESULT_SUCCESS;
+
+		NOS_RETURN_ON_FAILURE(RegisterWebcamReader(outList[(int)WebcamNodes::WebcamReader]))
+		NOS_RETURN_ON_FAILURE(RegisterWebcamStream(outList[(int)WebcamNodes::WebcamStream]))
+		return NOS_RESULT_SUCCESS;
 	}
-	return NOS_RESULT_SUCCESS;
-}
 
-NOSAPI_ATTR void NOSAPI_CALL nosUnloadPlugin()
-{
-	WebcamStreamManager::Stop();
-}
+	nosResult OnPreUnloadPlugin() override
+	{
+		WebcamStreamManager::Stop();
+		return NOS_RESULT_SUCCESS;
+	}
+};
 
-}
+NOS_EXPORT_PLUGIN_FUNCTIONS(WebcamPluginFunctions)
 } // namespace nos::test
