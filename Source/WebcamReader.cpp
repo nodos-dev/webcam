@@ -15,11 +15,11 @@ struct WebcamReaderNode : public NodeContext
 {
 	using NodeContext::NodeContext;
 	// Execution
-	virtual nosResult ExecuteNode(const nosNodeExecuteArgs* args)
+	virtual nosResult ExecuteNode(nosNodeExecuteParams* params)
 	{
-		nos::NodeExecuteArgs execArgs(args);
+		nos::NodeExecuteParams execParams(params);
 
-		auto* streamInfo = execArgs.GetPinData<webcam::WebcamStreamInfo>(NSN_StreamInfo);
+		auto* streamInfo = execParams.GetPinData<webcam::WebcamStreamInfo>(NSN_StreamInfo);
 		if (!streamInfo || !streamInfo->id())
 			return NOS_RESULT_FAILED;
 		
@@ -34,7 +34,7 @@ struct WebcamReaderNode : public NodeContext
 			if (sample.Size == 0)
 				return NOS_RESULT_FAILED;
 		}
-		nosResourceShareInfo bufToWrite = vkss::ConvertToResourceInfo(*execArgs.GetPinData<nos::sys::vulkan::Buffer>(NSN_BufferToWrite));
+		nosResourceShareInfo bufToWrite = vkss::ConvertToResourceInfo(*execParams.GetPinData<nos::sys::vulkan::Buffer>(NSN_BufferToWrite));
 		if (bufToWrite.Info.Buffer.Size != sample.Size)
 			nosEngine.LogE("Buffer size mismatch!");
 		
@@ -46,7 +46,7 @@ struct WebcamReaderNode : public NodeContext
 		}
 		
 		memcpy(mapped, sample.Data, std::min(uint32_t(sample.Size), bufToWrite.Info.Buffer.Size));
-		nosEngine.SetPinValue(execArgs[NSN_Output].Id, nos::Buffer::From(vkss::ConvertBufferInfo(bufToWrite)));
+		nosEngine.SetPinValue(execParams[NSN_Output].Id, nos::Buffer::From(vkss::ConvertBufferInfo(bufToWrite)));
 		return NOS_RESULT_SUCCESS;
 	}
 };

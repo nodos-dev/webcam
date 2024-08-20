@@ -17,7 +17,7 @@ namespace nos::webcam
 {
 WebcamStream::WebcamStream(WebcamDevice const& device, ComPtr<IMFSourceReader> reader, uint32_t streamIndex) : Device(device), Reader(reader), StreamIndex(streamIndex)
 {
-	nosEngine.GenerateID(&StreamId);
+	StreamId = nosEngine.GenerateID();
 	Reader->GetCurrentMediaType(streamIndex, &MediaType);
 }
 

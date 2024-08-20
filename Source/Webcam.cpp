@@ -16,6 +16,10 @@
 NOS_INIT_WITH_MIN_REQUIRED_MINOR(0)
 NOS_VULKAN_INIT();
 
+NOS_BEGIN_IMPORT_DEPS
+NOS_VULKAN_IMPORT
+NOS_END_IMPORT_DEPS
+
 namespace nos::webcam
 {
 enum WebcamNodes : int
@@ -36,8 +40,6 @@ NOSAPI_ATTR nosResult NOSAPI_CALL nosExportNodeFunctions(size_t* outCount, nosNo
 	if (!outFunctions)
 		return NOS_RESULT_SUCCESS;
 
-	NOS_RETURN_ON_FAILURE(RequestVulkanSubsystem());
-		
 	WebcamStreamManager::Start();
 
 #define GEN_CASE_NODE(name)				\

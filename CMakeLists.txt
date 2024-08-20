@@ -13,7 +13,7 @@ nos_find_sdk("1.2.0" NOS_PLUGIN_SDK_TARGET NOS_SUBSYSTEM_SDK_TARGET NOS_SDK_DIR)
 set(FLATC_EXECUTABLE ${NOS_SDK_DIR}/bin/flatc${CMAKE_EXECUTABLE_SUFFIX})
 
 # Dependencies
-nos_get_module("nos.sys.vulkan" "5.3" NOS_SYS_VULKAN_TARGET_5_3)
+nos_get_module("nos.sys.vulkan" "5.7" NOS_SYS_VULKAN_TARGET_5_3)
 
 # Schemas
 nos_generate_flatbuffers("${CMAKE_CURRENT_SOURCE_DIR}/Config" "${CMAKE_CURRENT_SOURCE_DIR}/Source" "cpp" "${NOS_SDK_DIR}/types" nosWebcam_generated)
