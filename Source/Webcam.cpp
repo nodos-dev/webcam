@@ -40,6 +40,8 @@ struct WebcamPluginFunctions : nos::PluginFunctions
 		if (!outList)
 			return NOS_RESULT_SUCCESS;
 
+		WebcamStreamManager::Start();
+
 		NOS_RETURN_ON_FAILURE(RegisterWebcamReader(outList[(int)WebcamNodes::WebcamReader]))
 		NOS_RETURN_ON_FAILURE(RegisterWebcamStream(outList[(int)WebcamNodes::WebcamStream]))
 		return NOS_RESULT_SUCCESS;
