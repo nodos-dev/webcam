@@ -168,7 +168,7 @@
           {
             "id": "1a6c24f1-da39-496f-8356-632e0d9dbe1a",
             "name": "UploadBufferProvider",
-            "class_name": "nos.mediaio.UploadBufferProvider",
+            "class_name": "nos.utilities.UploadBufferProvider",
             "pins": [
               {
                 "id": "fe36be20-0044-4a40-82d4-a258b663975f",
@@ -1711,7 +1711,7 @@
           {
             "id": "b8b092f8-822c-4e76-a2e2-a48453735d38",
             "name": "BoundedTextureQueue",
-            "class_name": "nos.mediaio.BoundedTextureQueue",
+            "class_name": "nos.utilities.BoundedQueue",
             "pins": [
               {
                 "id": "426c6021-8a85-4a2d-ad95-5a26107c1690",

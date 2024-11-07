@@ -2,7 +2,7 @@
     "info": {
         "id": {
             "name": "nos.webcam",
-            "version": "1.1.0"
+            "version": "1.1.1"
         },
         "display_name": "Webcam",
         "description": "Webcam plugin.",
@@ -13,11 +13,11 @@
         },
         {
           "name": "nos.mediaio",
-          "version": "1.4.0"
+          "version": "2.0.0"
         },
         {
           "name": "nos.utilities",
-          "version": "2.5.0"
+          "version": "2.9.0"
         },
         {
           "name": "nos.math",
