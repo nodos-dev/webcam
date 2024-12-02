@@ -1,17 +1,19 @@
 // Copyright MediaZ Teknoloji A.S. All Rights Reserved.
 
-#include "WebcamStream.h"
-
 #define COBJMACROS 1
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-#include <mfapi.h>
+#include <mfvirtualcamera.h>
+#include <mfobjects.h>
 #include <mfidl.h>
 #include <mfreadwrite.h>
 #include <mferror.h>
 #include <mfcaptureengine.h>
 #include <locale>
 #include <codecvt>
+#include <wrl/client.h>
+
+#include "WebcamStream.h"
 
 namespace nos::webcam
 {
@@ -65,7 +67,7 @@ TWebcamStreamInfo WebcamStream::GetStreamInfo() const
 	streamInfo.id = std::make_unique<fb::UUID>(StreamId);
 	streamInfo.device_name = Device.Name;
 	FormatInfo formatInfo = FormatInfo::FromMediaType(MediaType.Get(), StreamIndex);
-	streamInfo.format_name = std::string(formatInfo.GetFormatName().data(), 4);
+	streamInfo.format = GetFormatEnumFromSubType(formatInfo.SubType);
 	streamInfo.resolution = std::make_unique<fb::vec2u>(formatInfo.Resolution);
 	streamInfo.frame_rate = std::make_unique<fb::vec2u>(GetFrameRateVec2(formatInfo.FrameRate));
 	streamInfo.stream_index = StreamIndex;
@@ -206,6 +208,15 @@ std::vector<WebcamDevice> WebcamStreamManager::EnumerateDevices()
 
 		hr = devices[i]->GetAllocatedString(MF_DEVSOURCE_ATTRIBUTE_SOURCE_TYPE_VIDCAP_SYMBOLIC_LINK, &symlink, &length);
 		if (FAILED(hr)) continue;
+		
+		uint32_t repeatCount = 0;
+		for (auto& device : result) {
+			if (device.Name.find(nameNarrow) != std::string::npos)
+				repeatCount++;
+		}
+		if(repeatCount)
+			nameNarrow += " (" + std::to_string(repeatCount) + ")"; // If there are multiple devices with the same name, append a number to the name
+			
 		result.emplace_back(nameNarrow, std::wstring(symlink));
 
 		devices[i]->Release();

@@ -5,10 +5,16 @@ namespace nos.webcam;
 
 attribute "transient";
 
+enum WebcamTextureFormat : uint {
+  NONE = 0,
+  NV12 = 1,
+  YUY2 = 2,
+}
+
 table WebcamStreamInfo {
   id: nos.fb.UUID(transient);
   device_name: string;
-  format_name: string;
+  format: WebcamTextureFormat;
   resolution: nos.fb.vec2u;
   frame_rate: nos.fb.vec2u;
   stream_index: uint;

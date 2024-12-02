@@ -10,6 +10,7 @@
 
 #include <guiddef.h>
 #include <wrl.h>
+#include <mfapi.h>
 
 #include "Nodos/PluginHelpers.hpp"
 #include "Webcam_generated.h"
@@ -79,10 +80,6 @@ struct FormatInfo
 	nos::fb::vec2u Resolution;
 	WebcamFrameRate FrameRate = WebcamFrameRate::WEBCAM_FRAMERATE_30;
 	static FormatInfo FromMediaType(IMFMediaType* mediaType, uint32_t streamIndex);
-	std::array<char, 4> GetFormatName() const
-	{
-		return { (char)(SubType.Data1 >> 0), (char)(SubType.Data1 >> 8), (char)(SubType.Data1 >> 16), (char)(SubType.Data1 >> 24) };
-	}
 };
 
 struct WebcamStream
@@ -100,8 +97,31 @@ struct WebcamStream
 	ComPtr<IMFMediaType> MediaType{};
 };
 
+inline const GUID GetFormatSubTypeFromEnum(WebcamTextureFormat format)
+{
+	switch (format)
+	{
+	case WebcamTextureFormat::NV12: return MFVideoFormat_NV12;
+	case WebcamTextureFormat::YUY2: return MFVideoFormat_YUY2;
+	case WebcamTextureFormat::NONE: return MFVideoFormat_Base;
+	}
+	nosEngine.LogE("Unknown format!");
+	return MFVideoFormat_Base;
+}
+inline WebcamTextureFormat GetFormatEnumFromSubType(GUID const& subType)
+{
+	if (subType == MFVideoFormat_NV12)
+		return WebcamTextureFormat::NV12;
+	if (subType == MFVideoFormat_YUY2)
+		return WebcamTextureFormat::YUY2;
+	nosEngine.LogE("Unknown format!");
+	return WebcamTextureFormat::NV12;
+}
+
 inline std::string GetFormatNameFromSubType(GUID const& subType)
 {
+	if (subType == MFVideoFormat_Base)
+		return "NONE";
 	return std::string((char*)&subType.Data1, 4);
 }
 inline std::string GetResolutionString(nos::fb::vec2u const& resolution)

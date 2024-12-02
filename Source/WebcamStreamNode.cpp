@@ -79,7 +79,7 @@ struct WebcamStreamNode : public nos::NodeContext
 				}
 				if (!SelectedFormatGuid)
 				{
-					if (auto formatList = GetFormatList(); formatList.size() > 1)
+					if (auto formatList = GetFormatNameList(GetFormatList()); formatList.size() > 1)
 					{
 						AutoSelectIfPossible(NSN_Format, formatList);
 						return;
@@ -200,11 +200,12 @@ struct WebcamStreamNode : public nos::NodeContext
 		case ChangedPinType::Device:
 		{
 			auto formatList = GetFormatList();
-			UpdateStringList(GetFormatStringListName(), formatList);
+			auto formatNameList = GetFormatNameList(formatList);
+			UpdateStringList(GetFormatStringListName(), formatNameList);
 			if (!SelectedDevice)
 				SetPinValue(NSN_Format, nosBuffer{ .Data = (void*)"NONE", .Size = 5 });
 			else if(!first)
-				AutoSelectIfPossible(NSN_Format, formatList);
+				AutoSelectIfPossible(NSN_Format, formatNameList);
 			break;
 		}
 		case ChangedPinType::FormatName:
@@ -247,24 +248,33 @@ struct WebcamStreamNode : public nos::NodeContext
 		return ret;
 	}
 
-	std::vector<std::string> GetFormatList()
+	std::vector<WebcamTextureFormat> GetFormatList()
 	{
-		std::vector<std::string> ret = { "NONE" };
+		std::vector<WebcamTextureFormat> ret = { WebcamTextureFormat::NONE };
 		if (!SelectedDevice)
 			return ret;
 		for (auto const& format : CurDeviceFormats)
 		{
-			if (auto formatStr = GetFormatNameFromSubType(format.SubType); std::find(ret.begin(), ret.end(), formatStr) == ret.end())
-				ret.push_back(formatStr);
+			if (auto formatEnum = GetFormatEnumFromSubType(format.SubType); std::find(ret.begin(), ret.end(), formatEnum) == ret.end())
+				ret.push_back(formatEnum);
+		}
+		return ret;
+	}
+	static std::vector<std::string> GetFormatNameList(const std::vector<WebcamTextureFormat>& list)
+	{
+		std::vector<std::string> ret;
+		for (auto const& format : list)
+		{
+			ret.push_back(GetFormatNameFromSubType(GetFormatSubTypeFromEnum(format)));
 		}
 		return ret;
 	}
 
 	std::vector<std::string> GetResolutionList()
 	{
-		std::vector<std::string> ret = { "NONE" };
+		std::vector<std::string> ret;
 		if (!SelectedDevice || !SelectedFormatGuid)
-			return ret;
+			return {"NONE"};
 		for (auto const& format : CurDeviceFormats)
 			if (format.SubType == *SelectedFormatGuid)
 				if (auto resStr = GetResolutionString(format.Resolution); std::find(ret.begin(), ret.end(), resStr) == ret.end())
@@ -274,9 +284,9 @@ struct WebcamStreamNode : public nos::NodeContext
 
 	std::vector<std::string> GetFrameRateList()
 	{
-		std::vector<std::string> ret = { "NONE" };
+		std::vector<std::string> ret;
 		if (!SelectedDevice || !SelectedFormatGuid || !SelectedResolution)
-			return ret;
+			return { "NONE" };
 		for (auto const& format : CurDeviceFormats)
 			if (format.SubType == *SelectedFormatGuid && format.Resolution == *SelectedResolution)
 				if (auto frameRateStr = GetFrameRateString(format.FrameRate); std::find(ret.begin(), ret.end(), frameRateStr) == ret.end())
