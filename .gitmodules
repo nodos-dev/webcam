@@ -1,0 +1,3 @@
+[submodule "External/softcam"]
+	path = External/softcam
+	url = https://github.com/nodos-dev/softcam.git

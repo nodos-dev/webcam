@@ -26,11 +26,13 @@ enum WebcamNodes : int
 {	// CPU nodes
 	WebcamReader = 0,
 	WebcamStream,
+	WebcamWriter,
 	Count
 };
 
 nosResult RegisterWebcamReader(nosNodeFunctions* function);
 nosResult RegisterWebcamStream(nosNodeFunctions* function);
+nosResult RegisterWebcamWriter(nosNodeFunctions* function);
 
 struct WebcamPluginFunctions : nos::PluginFunctions
 {
@@ -44,6 +46,7 @@ struct WebcamPluginFunctions : nos::PluginFunctions
 
 		NOS_RETURN_ON_FAILURE(RegisterWebcamReader(outList[(int)WebcamNodes::WebcamReader]))
 		NOS_RETURN_ON_FAILURE(RegisterWebcamStream(outList[(int)WebcamNodes::WebcamStream]))
+		NOS_RETURN_ON_FAILURE(RegisterWebcamWriter(outList[(int)WebcamNodes::WebcamWriter]))
 		return NOS_RESULT_SUCCESS;
 	}
 

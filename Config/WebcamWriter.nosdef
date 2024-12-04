@@ -1,0 +1,46 @@
+{
+	"nodes": [
+		{
+			"class_name": "WebcamWriter",
+			"contents_type": "Job",
+			"pins": [
+				{
+					"name": "Run",
+					"type_name": "nos.exe",
+					"show_as": "INPUT_PIN",
+					"can_show_as": "INPUT_PIN_ONLY"
+				},
+				{
+					"name": "Source",
+					"type_name": "nos.sys.vulkan.Buffer",
+					"show_as": "INPUT_PIN",
+					"can_show_as": "INPUT_PIN_ONLY"
+				},
+				{
+					"name": "Resolution",
+					"type_name": "nos.fb.vec2u",
+					"show_as": "INPUT_PIN",
+					"can_show_as": "INPUT_PIN_OR_PROPERTY",
+					"data": {
+						"x": 1280,
+						"y": 720
+					}
+				},
+				{
+					"name": "Frame Rate",
+					"type_name": "float",
+					"show_as": "INPUT_PIN",
+					"can_show_as": "INPUT_PIN_OR_PROPERTY",
+					"data": 30.0
+				},
+				{
+					"name": "Format",
+					"type_name": "nos.webcam.WebcamTextureFormat",
+					"show_as": "INPUT_PIN",
+					"can_show_as": "INPUT_PIN_OR_PROPERTY",
+					"data": "RGB24"
+				}
+			]
+		}
+	]
+}

@@ -15,6 +15,8 @@
 #include "Nodos/PluginHelpers.hpp"
 #include "Webcam_generated.h"
 
+#include <softcam.h>
+
 struct IMFSourceReader;
 struct IMFMediaType;
 struct IMFSample;
@@ -46,6 +48,7 @@ struct WebcamDevice
 {
 	std::string Name;
 	std::wstring SymLink;
+	//scCamera virtualCamera; // If device is created by softcam
 };
 
 enum class WebcamFrameRate : uint32_t

@@ -12,6 +12,15 @@ endif()
 nos_find_sdk("1.2.0" NOS_PLUGIN_SDK_TARGET NOS_SUBSYSTEM_SDK_TARGET NOS_SDK_DIR)
 set(FLATC_EXECUTABLE ${NOS_SDK_DIR}/bin/flatc${CMAKE_EXECUTABLE_SUFFIX})
 
+# Softcam (To create virtual camera on Windows)
+if (WIN32) 
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+    add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/External/softcam "${CMAKE_CURRENT_BINARY_DIR}/softcamlibraries")
+
+    nos_get_targets(NOSWEBCAM_EXTERNAL_TARGETS "./External/softcam")
+    nos_group_targets("${NOSWEBCAM_EXTERNAL_TARGETS}" "External")
+endif()
+
 # Dependencies
 nos_get_module("nos.sys.vulkan" "5.8" NOS_SYS_VULKAN_TARGET_5_8)
 
@@ -19,10 +28,34 @@ nos_get_module("nos.sys.vulkan" "5.8" NOS_SYS_VULKAN_TARGET_5_8)
 nos_generate_flatbuffers("${CMAKE_CURRENT_SOURCE_DIR}/Config" "${CMAKE_CURRENT_SOURCE_DIR}/Source" "cpp" "${NOS_SDK_DIR}/types" nosWebcam_generated)
 
 set(wmf_libs ole32.lib mf.lib mfuuid.lib mfreadwrite.lib Shlwapi.lib mfplat.lib)
-list(APPEND DEPENDENCIES ${NOS_SYS_VULKAN_TARGET_5_8} ${NOS_PLUGIN_SDK_TARGET} ${wmf_libs} nosWebcam_generated)
+list(APPEND DEPENDENCIES ${NOS_SYS_VULKAN_TARGET_5_8} ${NOS_PLUGIN_SDK_TARGET} ${wmf_libs} nosWebcam_generated softcamStatic)
+list(APPEND INCLUDE_FOLDERS
+    ${EXTERNAL_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/Source
+    ${CMAKE_CURRENT_LIST_DIR}/External
+    ${CMAKE_CURRENT_LIST_DIR}/External/softcam
+    ${CMAKE_CURRENT_LIST_DIR}/External/softcam/src/softcam)
 
 nos_add_plugin("nosWebcam" "${DEPENDENCIES}" "${INCLUDE_FOLDERS}")
 set_target_properties(nosWebcam PROPERTIES CXX_STANDARD 23)
+
+if (WIN32)
+    add_dependencies(nosWebcam softcam_installer)
+
+    add_custom_command(
+        TARGET nosWebcam POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_FILE:softcam>  # This is the output of the 'example' target
+            ${CMAKE_CURRENT_SOURCE_DIR}/Binaries/softcam.dll
+    )
+
+    add_custom_command(
+        TARGET nosWebcam POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy
+            $<TARGET_FILE:softcam_installer>  # This is the output of the 'example' target
+            ${CMAKE_CURRENT_SOURCE_DIR}/Binaries/softcam_installer.exe
+    )
+endif()
 
 # Project generation
 nos_group_targets("nosWebcam" "NOS Plugins")

@@ -30,30 +30,42 @@
       ],
       "category": "Media I/O"
     },
-    "node_definitions": [
-        "Config/WebcamReader.nosdef", 
-		"Config/WebcamStream.nosdef",
-		"Config/WebcamIn.nosdef"
-    ],
+  "node_definitions": [
+    "Config/WebcamReader.nosdef",
+    "Config/WebcamStream.nosdef",
+    "Config/WebcamIn.nosdef",
+    "Config/WebcamOut.nosdef",
+    "Config/WebcamWriter.nosdef"
+  ],
     "custom_types" :[
       "Config/Webcam.fbs"
     ],
     "binary_path": "Binaries/nosWebcam",
-    "associated_nodes": [
-		{
-            "category": "Device|Webcam",
-            "class_name": "WebcamIn",
-            "display_name": "WebcamIn"
-        },
-		{
-            "category": "Device|Webcam",
-            "class_name": "WebcamStream",
-            "display_name": "WebcamStream"
-        },
-        {
-            "category": "Device|Webcam",
-            "class_name": "WebcamReader",
-            "display_name": "WebcamReader"
-        }
-    ]
+  "associated_nodes": [
+    {
+      "category": "Device|Webcam",
+      "class_name": "WebcamIn",
+      "display_name": "WebcamIn"
+    },
+    {
+      "category": "Device|Webcam",
+      "class_name": "WebcamStream",
+      "display_name": "WebcamStream"
+    },
+    {
+      "category": "Device|Webcam",
+      "class_name": "WebcamReader",
+      "display_name": "WebcamReader"
+    },
+    {
+      "category": "Device|Webcam",
+      "class_name": "WebcamWriter",
+      "display_name": "WebcamWriter"
+    },
+    {
+      "category": "Device|Webcam",
+      "class_name": "WebcamOut",
+      "display_name": "Webcam Output"
+    }
+  ]
 }
