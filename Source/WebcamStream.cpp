@@ -1,19 +1,17 @@
 // Copyright MediaZ Teknoloji A.S. All Rights Reserved.
 
+#include "WebcamStream.h"
+
 #define COBJMACROS 1
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
-#include <mfvirtualcamera.h>
-#include <mfobjects.h>
+#include <mfapi.h>
 #include <mfidl.h>
 #include <mfreadwrite.h>
 #include <mferror.h>
 #include <mfcaptureengine.h>
 #include <locale>
 #include <codecvt>
-#include <wrl/client.h>
-
-#include "WebcamStream.h"
 
 namespace nos::webcam
 {
