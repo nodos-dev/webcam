@@ -38,7 +38,7 @@
 					"type_name": "nos.webcam.WebcamTextureFormat",
 					"show_as": "INPUT_PIN",
 					"can_show_as": "INPUT_PIN_OR_PROPERTY",
-					"data": "RGB24"
+					"data": "BGR24"
 				}
 			]
 		}

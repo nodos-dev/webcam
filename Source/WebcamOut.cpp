@@ -21,7 +21,7 @@ float getFormatSizePerPixel(WebcamTextureFormat format) {
 		return 1.5f;
 	case WebcamTextureFormat::YUY2:
 		return 2.0f;
-	case WebcamTextureFormat::RGB24:
+	case WebcamTextureFormat::BGR24:
 		return 3.0f;
 	default:
 		return 0.0f;
@@ -153,8 +153,8 @@ struct WebcamWriterNode : public NodeContext
 	softcamTextureFormat GetSoftcamFormatFromWebcamFormat(WebcamTextureFormat format) {
 		switch (format)
 		{
-		case WebcamTextureFormat::RGB24:
-			return SOFTCAM_TEXTURE_FORMAT_RGB24;
+		case WebcamTextureFormat::BGR24:
+			return SOFTCAM_TEXTURE_FORMAT_BGR24;
 		case WebcamTextureFormat::NV12:
 			return SOFTCAM_TEXTURE_FORMAT_NV12;
 		case WebcamTextureFormat::YUY2:
@@ -173,7 +173,7 @@ struct WebcamWriterNode : public NodeContext
 			SetNodeStatusMessage("Invalid parameter for camera", nos::fb::NodeStatusMessageType::FAILURE);
 			return;
 		}
-		if (Format != WebcamTextureFormat::RGB24) {
+		if (Format != WebcamTextureFormat::BGR24) {
 			SetNodeStatusMessage("Not tested format", nos::fb::NodeStatusMessageType::WARNING);
 		}
 
@@ -183,7 +183,7 @@ struct WebcamWriterNode : public NodeContext
 			SetNodeStatusMessage("Camera creation failed", nos::fb::NodeStatusMessageType::FAILURE);
 			return;
 		}
-		else if (Format == WebcamTextureFormat::RGB24)
+		else if (Format == WebcamTextureFormat::BGR24)
 			ClearNodeStatusMessages();
 
 		ActiveResolution = Resolution;
