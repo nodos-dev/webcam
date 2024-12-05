@@ -5,7 +5,8 @@
         "Include/**",
         "Assets/**",
         "Shaders/*.{hlsl,glsl,frag,vert,spv}",
-        "Binaries/*.{dll,dylib,so}"
+        "Binaries/*.{dll,dylib,so,exe}",
+        "*.bat"
     ],
     "trigger_publish_globs": [
         "Source/**",
