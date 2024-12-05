@@ -165,6 +165,11 @@ struct WebcamWriterNode : public NodeContext
 	}
 	
 	void RecreateCamera() {
+		if (!IS_SOFTCAM_DRIVER_FOUND)
+		{
+			SetNodeStatusMessage("Softcam driver not found", nos::fb::NodeStatusMessageType::FAILURE);
+			return;
+		}
 		if (!IsCameraDifferent() && CamHandle)
 			return;
 		if(CamHandle)

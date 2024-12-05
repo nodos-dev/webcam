@@ -26,7 +26,7 @@ namespace nos::webcam
 {
 template<typename T>
 using ComPtr = Microsoft::WRL::ComPtr<T>;
-
+extern bool IS_SOFTCAM_DRIVER_FOUND;
 struct StreamSample
 {
 	ComPtr<IMFSample> Sample{};
