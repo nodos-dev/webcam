@@ -34,28 +34,12 @@ list(APPEND INCLUDE_FOLDERS
     ${CMAKE_CURRENT_SOURCE_DIR}/Source
     ${CMAKE_CURRENT_LIST_DIR}/External
     ${CMAKE_CURRENT_LIST_DIR}/External/softcam
-    ${CMAKE_CURRENT_LIST_DIR}/External/softcam/src/softcam)
+    ${CMAKE_CURRENT_LIST_DIR}/External/softcam/src/softcam
+    ${CMAKE_CURRENT_LIST_DIR}/External/softcam/src/softcamcore
+)
 
 nos_add_plugin("nosWebcam" "${DEPENDENCIES}" "${INCLUDE_FOLDERS}")
 set_target_properties(nosWebcam PROPERTIES CXX_STANDARD 23)
-
-if (WIN32)
-    add_dependencies(nosWebcam softcam_installer)
-
-    add_custom_command(
-        TARGET nosWebcam POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            $<TARGET_FILE:softcam>  # This is the output of the 'example' target
-            ${CMAKE_CURRENT_SOURCE_DIR}/Binaries/softcam.dll
-    )
-
-    add_custom_command(
-        TARGET nosWebcam POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy
-            $<TARGET_FILE:softcam_installer>  # This is the output of the 'example' target
-            ${CMAKE_CURRENT_SOURCE_DIR}/Binaries/softcam_installer.exe
-    )
-endif()
 
 # Project generation
 nos_group_targets("nosWebcam" "NOS Plugins")

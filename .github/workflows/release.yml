@@ -39,9 +39,18 @@ jobs:
           BUILD_NUMBER=$(( ${{ github.run_number }} + 562 ))
           echo "build_number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
 
+  build-driver-and-installer:
+    name: Build Driver and Installer
+    runs-on: self-hosted
+    needs: set-build-number
+    steps:
+      - name: Execute .bat file
+        shell: cmd
+        run: ./BuildDriverAndGetInstaller.bat
+
   call-release-modules:
     name: Release Modules
-    needs: set-build-number
+    needs: build-driver-and-installer
     uses: nodos-dev/actions/.github/workflows/release-modules.yml@windows-only
     with:
       ref_name: ${{ github.ref_name }}

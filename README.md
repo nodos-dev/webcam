@@ -21,6 +21,11 @@ cmake --build Build
 
 ## WebcamOut
 Webcam Plugin uses Softcam library to create virtual camera. If you want to use it:
-1. Build the project. There will be `softcam.dll` and `softcam_installer.exe` with `Webcam.dll`
-2. Run `RegisterSoftcam.bat` as administrator.
-3. Don't delete or move `softcam.dll` because we don't copy it anywhere else
+
+# Building from Source
+1. Build the project. 
+2. Run `BuildDriverAndGetInstaller.bat`. It will create `softcam.dll` and `softcam_installer.exe` in Binaries folder.
+
+# Install
+1. Run `RegisterSoftcam.bat` as administrator.
+2. Don't delete or move `softcam.dll` because we don't copy it anywhere else
