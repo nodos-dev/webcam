@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Execute .bat file
         shell: cmd
-        run: ./BuildDriverAndGetInstaller.bat
+        run: BuildDriverAndGetInstaller.bat
 
   call-release-modules:
     name: Release Modules
