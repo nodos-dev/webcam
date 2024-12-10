@@ -49,4 +49,4 @@ jobs:
       nodos_sdk_version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.nodos_sdk_version || '' }}
       clean: ${{ github.event_name == 'workflow_dispatch' && fromJson(github.event.inputs.clean) || false }}
       build_number: ${{ needs.set-build-number.outputs.build_number }}
-      pre_config_command: '.\BuildDriverAndGetInstaller.bat'
+      pre_config_command: '.\BuildDriverAndGetInstaller.bat && Remove-Item BuildDriverAndGetInstaller.bat'
