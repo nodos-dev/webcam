@@ -10,8 +10,8 @@
 #include <nosVulkanSubsystem/Helpers.hpp>
 
 #include "nosUtil/Stopwatch.hpp"
-
 #include "WebcamStream.h"
+#include "softcam.h"
 
 NOS_INIT_WITH_MIN_REQUIRED_MINOR(0)
 NOS_VULKAN_INIT();
@@ -35,45 +35,38 @@ nosResult RegisterWebcamReader(nosNodeFunctions* function);
 nosResult RegisterWebcamStream(nosNodeFunctions* function);
 nosResult RegisterWebcamWriter(nosNodeFunctions* function);
 
-static constexpr char WARNING_FAILED_TO_FIND_DRIVER[] = "Failed to find Softcam driver for WebcamWriter node";
+static constexpr char WARNING_FAILED_TO_FIND_DRIVER[] = "Failed to find Softcam driver for WebcamWriter node. Webcam output feature won't work.";
 bool CheckSoftcamDriver() {
-    const char* command = R"(reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID" /s /f "softcam.dll")";
-    char buffer[256];
-    std::string output;
+    // Initialize COM library
+    HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+    if (FAILED(hr)) {
+        std::cerr << "Failed to initialize COM: " << std::hex << hr << std::endl;
+        return hr;
+    }
 
-    nosModuleStatusMessage mes;
-    mes.Message = WARNING_FAILED_TO_FIND_DRIVER;
-    mes.MessageType = nosModuleStatusMessageType::NOS_MODULE_STATUS_MESSAGE_TYPE_WARNING;
-    mes.ModuleId = nosEngine.Module->Id;
-    mes.UpdateType = nosModuleStatusMessageUpdateType::NOS_MODULE_STATUS_MESSAGE_UPDATE_TYPE_APPEND;
+    // Replace with your driver's CLSID and IID
+    CLSID clsidDriver = scGetCameraDriverClassID();  // Define your CLSID here
 
-
-    // Open a pipe to execute the command
-    FILE* pipe = _popen(command, "r");
-    if (!pipe) {
-        nosEngine.SendModuleStatusMessageUpdate(&mes);
-        nosEngine.LogE("Failed to execute command");
+    // Try to create an instance of the COM object
+    IUnknown* pUnknown = nullptr;
+    hr = CoCreateInstance(clsidDriver, nullptr, CLSCTX_INPROC_SERVER, IID_IUnknown, (void**)&pUnknown);
+    if (FAILED(hr)) {
+        if (hr == REGDB_E_CLASSNOTREG) {
+            std::cerr << "The COM driver is not registered." << std::endl;
+        }
+        else {
+            std::cerr << "Failed to create COM instance: " << std::hex << hr << std::endl;
+        }
+        CoUninitialize();
         return false;
     }
 
-    // Read the output of the command
-    while (fgets(buffer, sizeof(buffer), pipe) != nullptr) {
-        output += buffer;  // Append the output to the string
-    }
+    // Release the base COM object
+    pUnknown->Release();
 
-    // Close the pipe
-    int exitStatus = _pclose(pipe);
-
-    // Check if the output contains any results
-    if (output.find("End of search: 0 match(es) found.") != std::string::npos) {
-        nosEngine.SendModuleStatusMessageUpdate(&mes);
-        nosEngine.LogDE(output.c_str(), "No results found for 'softcam.dll'. Please install the driver as written in README.md of the plugin");
-        return false;
-    }
-    else {
-        nosEngine.LogDI(output.c_str(), "Results found for 'softcam.dll'");
-        return true;
-    }
+    // Uninitialize COM library
+    CoUninitialize();
+    return true;
 }
 
 struct WebcamPluginFunctions : nos::PluginFunctions
@@ -85,6 +78,15 @@ struct WebcamPluginFunctions : nos::PluginFunctions
 			return NOS_RESULT_SUCCESS;
 
         IS_SOFTCAM_DRIVER_FOUND = CheckSoftcamDriver();
+        if (!IS_SOFTCAM_DRIVER_FOUND) {
+            nosModuleStatusMessage mes;
+            mes.Message = WARNING_FAILED_TO_FIND_DRIVER;
+            mes.MessageType = NOS_MODULE_STATUS_MESSAGE_TYPE_WARNING;
+            mes.ModuleId = nosEngine.Module->Id;
+            mes.UpdateType = NOS_MODULE_STATUS_MESSAGE_UPDATE_TYPE_APPEND;
+            nosEngine.SendModuleStatusMessageUpdate(&mes);
+        }
+
 		WebcamStreamManager::Start();
 
 		NOS_RETURN_ON_FAILURE(RegisterWebcamReader(outList[(int)WebcamNodes::WebcamReader]))
