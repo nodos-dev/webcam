@@ -20,6 +20,11 @@ on:
         required: false
         default: false
         type: boolean
+      sign_binaries:
+        description: 'Sign binaries'
+        required: false
+        default: false
+        type: boolean
 
 concurrency:
   group: single
@@ -50,3 +55,4 @@ jobs:
       clean: ${{ github.event_name == 'workflow_dispatch' && fromJson(github.event.inputs.clean) || false }}
       build_number: ${{ needs.set-build-number.outputs.build_number }}
       pre_config_command: '.\BuildDriverAndGetInstaller.bat && Remove-Item BuildDriverAndGetInstaller.bat'
+      sign_binaries: ${{github.event_name == 'workflow_dispatch' && fromJson(github.event.inputs.sign_binaries) || false }}
