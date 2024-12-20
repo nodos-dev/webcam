@@ -1192,7 +1192,7 @@
           {
             "id": "dd8b6a34-816b-489c-b96c-6f09d1128e3e",
             "name": "IsSameString",
-            "class_name": "nos.utilities.IsSameString",
+            "class_name": "nos.str.IsSameString",
             "pins": [
               {
                 "id": "e5e3ff8c-7689-42b4-8a07-160ecefe0912",
