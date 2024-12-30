@@ -1,6 +1,6 @@
 # Webcam Plugin for Nodos
 
-![build-badge](https://github.com/nodos-dev/webcam/actions/workflows/release.yml/badge.svg)
+![build-badge](https://github.com/nodos-dev/webcam/actions/workflows/build.yml/badge.svg)
 
 This folder contains the Nodos plugin for webcam I/O.
 
