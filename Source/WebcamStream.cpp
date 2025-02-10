@@ -366,7 +366,7 @@ std::expected<std::shared_ptr<WebcamStream>, std::string> WebcamStreamManager::O
 	return stream;
 }
 
-void WebcamStreamManager::DeleteStream(nosUUID const& streamId)
+void WebcamStreamManager::DeleteStream(uuid const& streamId)
 {
 	std::unique_lock lock(OpenStreamsMutex);
 	if (auto it = OpenStreams.find(streamId); it != OpenStreams.end())
@@ -375,7 +375,7 @@ void WebcamStreamManager::DeleteStream(nosUUID const& streamId)
 	}
 }
 
-std::shared_ptr<WebcamStream> WebcamStreamManager::GetStream(nosUUID const& streamId)
+std::shared_ptr<WebcamStream> WebcamStreamManager::GetStream(uuid const& streamId)
 {
 	std::shared_lock lock(OpenStreamsMutex);
 	if (auto it = OpenStreams.find(streamId); it != OpenStreams.end())

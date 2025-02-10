@@ -24,7 +24,7 @@ enum class ChangedPinType
 
 struct WebcamStreamNode : public nos::NodeContext
 {
-	WebcamStreamNode(const nosFbNode* node) : nos::NodeContext(node)
+	WebcamStreamNode(nosFbNodePtr node) : nos::NodeContext(node)
 	{
 		DeviceList = WebcamStreamManager::EnumerateDevices();
 
@@ -294,10 +294,10 @@ struct WebcamStreamNode : public nos::NodeContext
 		return ret;
 	}
 
-	std::string GetDeviceStringListName() { return "webcam.DeviceList." + UUID2STR(NodeId); }
-	std::string GetFormatStringListName() { return "webcam.FormatList." + UUID2STR(NodeId); }
-	std::string GetResolutionStringListName() { return "webcam.ResolutionList." + UUID2STR(NodeId); }
-	std::string GetFrameRateStringListName() { return "webcam.FrameRateList." + UUID2STR(NodeId); }
+	std::string GetDeviceStringListName() { return "webcam.DeviceList." + std::string(NodeId); }
+	std::string GetFormatStringListName() { return "webcam.FormatList." + std::string(NodeId); }
+	std::string GetResolutionStringListName() { return "webcam.ResolutionList." + std::string(NodeId); }
+	std::string GetFrameRateStringListName() { return "webcam.FrameRateList." + std::string(NodeId); }
 
 	void AutoSelectIfPossible(nosName pinName, std::vector<std::string> const& list)
 	{
@@ -305,7 +305,7 @@ struct WebcamStreamNode : public nos::NodeContext
 		SetPinValue(pinName, nosBuffer{ .Data = (void*)list[1].c_str(), .Size = list[1].size() + 1 });
 	}
 
-	std::optional<nosUUID> StreamId;
+	std::optional<uuid> StreamId;
 	FormatInfo SelectedFormatInfo;
 	int WebCamIndex = 0;
 

@@ -44,7 +44,7 @@ struct WebcamWriterNode : public NodeContext
 	nos::fb::vec2u Resolution;
 	WebcamTextureFormat Format;
 
-	WebcamWriterNode(const nosFbNode* node) : nos::NodeContext(node) {
+	WebcamWriterNode(nosFbNodePtr node) : nos::NodeContext(node) {
 		AddPinValueWatcher(NSN_FrameRate, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
 			{
 				FrameRate = *InterpretPinValue<float>(newVal);
@@ -81,7 +81,7 @@ struct WebcamWriterNode : public NodeContext
 		return ActiveFrameRate != FrameRate || ActiveResolution != Resolution || ActiveFormat != Format;
 	}
 
-	void OnPinValueChanged(nos::Name pinName, nosUUID pinId, nosBuffer value) override
+	void OnPinValueChanged(nos::Name pinName, uuid const& pinId, nosBuffer value) override
 	{
 		if (pinName == NSN_Source || pinName == NSN_Run)
 			return;
