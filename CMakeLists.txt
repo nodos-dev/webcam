@@ -9,6 +9,7 @@ if (NOT WITH_NODOS_WORKSPACE)
     "Place this repo under nodos-workspace/Module folder and run cmake -S ./Toolchain/CMake -B Build from workspace root.")
 endif()
 
+add_compile_definitions(NOS_DISABLE_DEPRECATED)
 nos_find_sdk("1.3.0" NOS_PLUGIN_SDK_TARGET NOS_SUBSYSTEM_SDK_TARGET NOS_SDK_DIR)
 set(FLATC_EXECUTABLE ${NOS_SDK_DIR}/bin/flatc${CMAKE_EXECUTABLE_SUFFIX})
 
@@ -22,13 +23,13 @@ if (WIN32)
 endif()
 
 # Dependencies
-nos_get_module("nos.sys.vulkan" "5.25" NOS_SYS_VULKAN_TARGET_5_25)
+nos_get_module("nos.sys.vulkan" "6.0" NOS_SYS_VULKAN_TARGET)
 
 # Schemas
 nos_generate_flatbuffers("${CMAKE_CURRENT_SOURCE_DIR}/Config" "${CMAKE_CURRENT_SOURCE_DIR}/Source" "cpp" "${NOS_SDK_DIR}/types" nosWebcam_generated)
 
 set(wmf_libs ole32.lib mf.lib mfuuid.lib mfreadwrite.lib Shlwapi.lib mfplat.lib)
-list(APPEND DEPENDENCIES ${NOS_SYS_VULKAN_TARGET_5_25} ${NOS_PLUGIN_SDK_TARGET} ${wmf_libs} nosWebcam_generated softcamStatic)
+list(APPEND DEPENDENCIES ${NOS_SYS_VULKAN_TARGET} ${NOS_PLUGIN_SDK_TARGET} ${wmf_libs} nosWebcam_generated softcamStatic)
 list(APPEND INCLUDE_FOLDERS
     ${EXTERNAL_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/Source

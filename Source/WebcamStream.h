@@ -93,7 +93,7 @@ struct WebcamStream
 	void CloseStream();
 	TWebcamStreamInfo GetStreamInfo() const;
 
-	nosUUID StreamId;
+	uuid StreamId;
 	WebcamDevice Device;
 	ComPtr<IMFSourceReader> Reader{};
 	uint32_t StreamIndex = 0;
@@ -211,12 +211,12 @@ struct WebcamStreamManager
 	static std::vector<WebcamDevice> EnumerateDevices();
 	static std::vector<FormatInfo> EnumerateFormats(WebcamDevice const& device);
 	std::expected<std::shared_ptr<WebcamStream>, std::string> OpenStreamFromFormat(WebcamDevice const& deviceId, FormatInfo const& formatInfo);
-	void DeleteStream(nosUUID const& streamId);
+	void DeleteStream(uuid const& streamId);
 
-	std::shared_ptr<WebcamStream> GetStream(nosUUID const& streamId);
+	std::shared_ptr<WebcamStream> GetStream(uuid const& streamId);
 private:
 	static std::unique_ptr<WebcamStreamManager> Instance;
 	std::shared_mutex OpenStreamsMutex;
-	std::unordered_map<nosUUID, std::shared_ptr<WebcamStream>> OpenStreams;
+	std::unordered_map<uuid, std::shared_ptr<WebcamStream>> OpenStreams;
 };
 }
