@@ -44,5 +44,5 @@
     "custom_types" :[
       "Config/Webcam.fbs"
     ],
-    "binary_path": "Binaries/nosWebcam",
+    "binary_path": "Binaries/nosWebcam"
 }
