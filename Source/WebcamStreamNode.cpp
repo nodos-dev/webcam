@@ -301,8 +301,10 @@ struct WebcamStreamNode : public nos::NodeContext
 
 	void AutoSelectIfPossible(nosName pinName, std::vector<std::string> const& list)
 	{
-		assert(list.size() > 1);
-		SetPinValue(pinName, nosBuffer{ .Data = (void*)list[1].c_str(), .Size = list[1].size() + 1 });
+		if (list.size()) {
+			uint32_t itemIndx = list.size() > 1 ? 1 : 0;
+			SetPinValue(pinName, nosBuffer{ .Data = (void*)list[itemIndx].c_str(), .Size = list[itemIndx].size() + 1 });
+		}
 	}
 
 	std::optional<uuid> StreamId;
