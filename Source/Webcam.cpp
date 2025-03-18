@@ -35,7 +35,7 @@ nosResult RegisterWebcamReader(nosNodeFunctions* function);
 nosResult RegisterWebcamStream(nosNodeFunctions* function);
 nosResult RegisterWebcamWriter(nosNodeFunctions* function);
 
-static constexpr char WARNING_FAILED_TO_FIND_DRIVER[] = "Failed to find Softcam driver for WebcamWriter node. Webcam output feature won't work.";
+static constexpr char WARNING_FAILED_TO_FIND_DRIVER[] = "Failed to find Softcam driver for WebcamWriter node.";
 bool CheckSoftcamDriver() {
     // Initialize COM library
     HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
@@ -80,10 +80,12 @@ struct WebcamPluginFunctions : nos::PluginFunctions
         IS_SOFTCAM_DRIVER_FOUND = CheckSoftcamDriver();
         if (!IS_SOFTCAM_DRIVER_FOUND) {
             nosModuleStatusMessage mes;
-            mes.Message = WARNING_FAILED_TO_FIND_DRIVER;
+            mes.Message = "Webcam output feature not supported";
             mes.MessageType = NOS_MODULE_STATUS_MESSAGE_TYPE_WARNING;
             mes.ModuleId = nosEngine.Module->Id;
             mes.UpdateType = NOS_MODULE_STATUS_MESSAGE_UPDATE_TYPE_APPEND;
+			mes.Details = WARNING_FAILED_TO_FIND_DRIVER;
+            mes.PopupTimeoutSeconds = 5;
             nosEngine.SendModuleStatusMessageUpdate(&mes);
         }
 
