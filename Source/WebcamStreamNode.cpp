@@ -28,6 +28,16 @@ struct WebcamStreamNode : public nos::NodeContext
 	{
 		DeviceList = WebcamStreamManager::EnumerateDevices();
 
+		if (auto* pins = node->pins())
+		{
+			for (auto const* pin : *pins)
+			{
+				auto name = pin->name()->c_str();
+				if (std::string(name) == NSN_Stream)
+					StreamPinId = *pin->id();
+			}
+		}
+
 		UpdateStringList(GetDeviceStringListName(), GetDeviceList());
 		UpdateStringList(GetFormatStringListName(), { "NONE" });
 		UpdateStringList(GetResolutionStringListName(), { "NONE" });
@@ -37,6 +47,9 @@ struct WebcamStreamNode : public nos::NodeContext
 		SetPinVisualizer(NSN_Format, { .type = nos::fb::VisualizerType::COMBO_BOX, .name = GetFormatStringListName() });
 		SetPinVisualizer(NSN_Resolution, { .type = nos::fb::VisualizerType::COMBO_BOX, .name = GetResolutionStringListName() });
 		SetPinVisualizer(NSN_FrameRate, { .type = nos::fb::VisualizerType::COMBO_BOX, .name = GetFrameRateStringListName() });
+
+		nosOrphanState orphan{ .Type = NOS_ORPHAN_STATE_TYPE_ORPHAN, .Message = "Channel is not open" };
+		nosEngine.SetItemOrphanState(StreamPinId, &orphan);
 
 		AddPinValueWatcher(NSN_Device, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
 			{
@@ -173,6 +186,8 @@ struct WebcamStreamNode : public nos::NodeContext
 		{
 			auto openedStream = res.value();
 			StreamId = openedStream->StreamId;
+			nosOrphanState orphan{ .Type = NOS_ORPHAN_STATE_TYPE_ACTIVE, .Message = "Channel is open" };
+			nosEngine.SetItemOrphanState(StreamPinId, &orphan);
 			SetPinValue(NSN_Stream, nos::Buffer::From(openedStream->GetStreamInfo()));
 			nosEngine.SendPathRestart(NodeId);
 			return true;
@@ -190,6 +205,8 @@ struct WebcamStreamNode : public nos::NodeContext
 		SelectedFormatInfo = {};
 		if(StreamId)
 			WebcamStreamManager::GetInstance().DeleteStream(*StreamId);
+		nosOrphanState orphan{ .Type = NOS_ORPHAN_STATE_TYPE_PASSIVE, .Message = "Channel is closed" };
+		nosEngine.SetItemOrphanState(StreamPinId, &orphan);
 		SetPinValue(NSN_Stream, nos::Buffer::From(TWebcamStreamInfo{}));
 	}
 
@@ -320,6 +337,7 @@ struct WebcamStreamNode : public nos::NodeContext
 	std::string FormatPin = "NONE";
 	std::string ResolutionPin = "NONE";
 	std::string FrameRatePin = "NONE";
+	nos::uuid StreamPinId;
 
 	nosResourceShareInfo _nosIntermediateTexture = {};
 	nosResourceShareInfo _nosMemoryBuffer = {};
