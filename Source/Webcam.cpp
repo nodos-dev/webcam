@@ -13,7 +13,7 @@
 #include "WebcamStream.h"
 #include "softcam.h"
 
-NOS_INIT(0)
+NOS_INIT_WITH_MIN_REQUIRED_MINOR(6)
 NOS_VULKAN_INIT();
 
 NOS_BEGIN_IMPORT_DEPS()

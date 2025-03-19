@@ -120,7 +120,7 @@ struct WebcamWriterNode : public NodeContext
 
 		if (!inputBuffer.Memory.Handle || inputBuffer.Memory.Size < outBufferSize)
 		{
-			nosEngine.LogE("WebcamOut: Invalid input buffer");
+			nosEngine.LogE("WebcamWriter: Invalid input buffer");
 			return NOS_RESULT_FAILED;
 		}
 
@@ -140,7 +140,14 @@ struct WebcamWriterNode : public NodeContext
 		if (!CamHandle)
 			RecreateCamera();
 		if (ActiveNodeId != NodeId && ActiveNodeId != nos::fb::UUID()) {
-			SetNodeStatusMessage("Another WebcamOut node is already active", nos::fb::NodeStatusMessageType::FAILURE);
+			char uri[256] = {};
+			size_t uriLength = 0;
+			auto res = nosEngine.GetItemUri(nos::uuid(ActiveNodeId), uri, &uriLength);
+			if (res != NOS_RESULT_SUCCESS || uriLength > 255)
+				return;
+			std::string finalUri = uriLength ? uri : "";
+			auto detailsStr = std::string("Another [WebcamWriter node](") + finalUri + ") is already active";
+			SetNodeStatusMessages({ {{}, "WebcamWriter activation failed", nos::fb::NodeStatusMessageType::FAILURE, detailsStr, 5, true, true} });
 			return;
 		}
 
@@ -167,7 +174,7 @@ struct WebcamWriterNode : public NodeContext
 	void RecreateCamera() {
 		if (!IS_SOFTCAM_DRIVER_FOUND)
 		{
-			SetNodeStatusMessage("Softcam driver not found", nos::fb::NodeStatusMessageType::FAILURE);
+			SetNodeStatusMessages({ {{}, "Driver not found", nos::fb::NodeStatusMessageType::FAILURE, "Softcam driver is not installed on your system. Install it according to the directives in README.md", 10, true, true}});
 			return;
 		}
 		if (!IsCameraDifferent() && CamHandle)
@@ -175,17 +182,21 @@ struct WebcamWriterNode : public NodeContext
 		if(CamHandle)
 			DestroyCamera();
 		if (!Resolution.x() || !Resolution.y() || FrameRate < FLT_MIN || Format == WebcamTextureFormat::NONE) {
-			SetNodeStatusMessage("Invalid parameter for camera", nos::fb::NodeStatusMessageType::FAILURE);
+			static constexpr auto resError = "Resolution dimension can't be 0";
+			static constexpr auto frameRateError = "FrameRate can't be 0";
+			static constexpr auto formatError = "Format can't be NONE";
+			auto detailsStr = (!Resolution.x() || !Resolution.y()) ? resError : (FrameRate < FLT_MIN) ? frameRateError : formatError;
+			SetNodeStatusMessages({ {{}, "Invalid parameter for camera", nos::fb::NodeStatusMessageType::FAILURE, detailsStr, 5, true, true}});
 			return;
 		}
 		if (Format != WebcamTextureFormat::BGR24) {
-			SetNodeStatusMessage("Not tested format", nos::fb::NodeStatusMessageType::WARNING);
+			SetNodeStatusMessages({ {{}, "Not tested format", nos::fb::NodeStatusMessageType::WARNING, "", 5, true, false}});
 		}
 
 		CamHandle = scCreateCamera(Resolution.x(), Resolution.y(), FrameRate, GetSoftcamFormatFromWebcamFormat(Format));
 		if (!CamHandle)
 		{
-			SetNodeStatusMessage("Camera creation failed", nos::fb::NodeStatusMessageType::FAILURE);
+			SetNodeStatusMessages({ {{}, "Camera creation failed", nos::fb::NodeStatusMessageType::FAILURE, "Driver failed to create the camera", 5, true, true}});
 			return;
 		}
 		else if (Format == WebcamTextureFormat::BGR24)
