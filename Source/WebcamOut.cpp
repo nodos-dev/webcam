@@ -44,7 +44,8 @@ struct WebcamWriterNode : public NodeContext
 	nos::fb::vec2u Resolution;
 	WebcamTextureFormat Format;
 
-	WebcamWriterNode(nosFbNodePtr node) : nos::NodeContext(node) {
+	nosResult OnCreate(nosFbNodePtr node) override
+	{
 		AddPinValueWatcher(NSN_FrameRate, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
 			{
 				FrameRate = *InterpretPinValue<float>(newVal);
@@ -58,7 +59,9 @@ struct WebcamWriterNode : public NodeContext
 				Format = *InterpretPinValue<WebcamTextureFormat>(newVal);
 			});
 		RecreateCamera();
+		return NOS_RESULT_SUCCESS;
 	}
+
 	~WebcamWriterNode() {
 		if (CamHandle)
 			scDeleteCamera(CamHandle);

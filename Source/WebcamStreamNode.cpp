@@ -24,7 +24,7 @@ enum class ChangedPinType
 
 struct WebcamStreamNode : public nos::NodeContext
 {
-	WebcamStreamNode(nosFbNodePtr node) : nos::NodeContext(node)
+	nosResult OnCreate(nosFbNodePtr node) override
 	{
 		DeviceList = WebcamStreamManager::EnumerateDevices();
 
@@ -153,6 +153,8 @@ struct WebcamStreamNode : public nos::NodeContext
 				}
 				UpdateAfter(ChangedPinType::FrameRate, !oldValue);
 			});
+
+		return NOS_RESULT_SUCCESS;
 	}
 
 	~WebcamStreamNode()
