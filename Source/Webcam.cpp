@@ -13,7 +13,7 @@
 #include "WebcamStream.h"
 #include "softcam.h"
 
-NOS_INIT_WITH_MIN_REQUIRED_MINOR(6)
+NOS_INIT()
 NOS_VULKAN_INIT();
 
 NOS_BEGIN_IMPORT_DEPS()
@@ -79,14 +79,14 @@ struct WebcamPluginFunctions : nos::PluginFunctions
 
         IS_SOFTCAM_DRIVER_FOUND = CheckSoftcamDriver();
         if (!IS_SOFTCAM_DRIVER_FOUND) {
-            nosModuleStatusMessage mes;
+            nosPluginStatusMessage mes;
             mes.Message = "Webcam output feature not supported";
-            mes.MessageType = NOS_MODULE_STATUS_MESSAGE_TYPE_WARNING;
-            mes.ModuleId = nosEngine.Module->Id;
-            mes.UpdateType = NOS_MODULE_STATUS_MESSAGE_UPDATE_TYPE_APPEND;
+            mes.MessageType = NOS_PLUGIN_STATUS_MESSAGE_TYPE_WARNING;
+            mes.PluginId = nosEngine.Plugin->Id;
+            mes.UpdateType = NOS_PLUGIN_STATUS_MESSAGE_UPDATE_TYPE_APPEND;
 			mes.Details = WARNING_FAILED_TO_FIND_DRIVER;
             mes.PopupTimeoutSeconds = 5;
-            nosEngine.SendModuleStatusMessageUpdate(&mes);
+            nosEngine.SendPluginStatusMessageUpdate(&mes);
         }
 
 		WebcamStreamManager::Start();
