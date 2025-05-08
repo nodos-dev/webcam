@@ -116,7 +116,7 @@ struct WebcamWriterNode : public NodeContext
 		nosResourceShareInfo inputBuffer{};
 		for (size_t i = 0; i < params->PinCount; ++i)
 		{
-			auto& pin = params->Pins[i];
+			auto& pin = *params->Pins[i];
 			if (pin.Name == NSN_Source)
 				inputBuffer = vkss::ConvertToResourceInfo(*InterpretPinValue<sys::vulkan::Buffer>(*pin.Data));
 		}
