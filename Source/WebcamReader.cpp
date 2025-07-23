@@ -1,8 +1,8 @@
-#include <Nodos/PluginHelpers.hpp>
+#include <Nodos/Plugin.hpp>
 #include <nosVulkanSubsystem/Helpers.hpp>
 
 #include "WebcamStream.h"
-#include "nosUtil/Stopwatch.hpp"
+#include <Nodos/Utils/Stopwatch.hpp>
 #include "Webcam_generated.h"
 
 namespace nos::webcam

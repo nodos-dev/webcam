@@ -12,7 +12,7 @@
 #include <wrl.h>
 #include <mfapi.h>
 
-#include "Nodos/PluginHelpers.hpp"
+#include "Nodos/Plugin.hpp"
 #include "Webcam_generated.h"
 
 #include <softcam.h>

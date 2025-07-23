@@ -23,7 +23,7 @@ if (WIN32)
 endif()
 
 # Dependencies
-nos_get_module("nos.sys.vulkan" "6.22" NOS_SYS_VULKAN_TARGET)
+nos_get_module("nos.sys.vulkan" "6.28" NOS_SYS_VULKAN_TARGET)
 
 # Schemas
 nos_generate_flatbuffers("${CMAKE_CURRENT_SOURCE_DIR}/Config" "${CMAKE_CURRENT_SOURCE_DIR}/Source" "cpp" "${NOS_SDK_DIR}/types" nosWebcam_generated)
