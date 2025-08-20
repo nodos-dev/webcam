@@ -10,8 +10,7 @@ if (NOT WITH_NODOS_WORKSPACE)
 endif()
 
 add_compile_definitions(NOS_DISABLE_DEPRECATED)
-nos_find_plugin_sdk("39.0.0" NOS_PLUGIN_SDK_TARGET NOS_SDK_DIR)
-set(FLATC_EXECUTABLE ${NOS_SDK_DIR}/bin/flatc${CMAKE_EXECUTABLE_SUFFIX})
+nos_find_plugin_sdk("39.12.0" NOS_PLUGIN_SDK_TARGET NOS_SDK_DIR)
 
 # Softcam (To create virtual camera on Windows)
 if (WIN32) 
@@ -23,7 +22,7 @@ if (WIN32)
 endif()
 
 # Dependencies
-nos_get_module("nos.sys.vulkan" "6.28" NOS_SYS_VULKAN_TARGET)
+nos_get_plugin("nos.sys.vulkan" "6.28" NOS_SYS_VULKAN_TARGET)
 
 # Schemas
 nos_generate_flatbuffers("${CMAKE_CURRENT_SOURCE_DIR}/Config" "${CMAKE_CURRENT_SOURCE_DIR}/Source" "cpp" "${NOS_SDK_DIR}/types" nosWebcam_generated)
