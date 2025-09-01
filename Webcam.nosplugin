@@ -2,30 +2,30 @@
     "info": {
         "id": {
             "name": "nos.webcam",
-            "version": "1.11.2"
+            "version": "2.0.0"
         },
         "display_name": "Webcam",
         "description": "Webcam plugin.",
       "dependencies": [
         {
           "name": "nos.sys.vulkan",
-          "version": "6.28"
+          "version": "7.0"
         },
         {
           "name": "nos.mediaio",
-          "version": "2.11"
+          "version": "3.0"
         },
         {
           "name": "nos.utilities",
-          "version": "3.21"
+          "version": "3.28"
         },
         {
           "name": "nos.math",
-          "version": "1.21"
+          "version": "1.23"
         },
         {
           "name": "nos.reflect",
-          "version": "1.11"
+          "version": "2.0"
         },
         {
           "name": "nos.str",
@@ -34,15 +34,5 @@
       ],
       "category": "Media I/O"
     },
-  "node_definitions": [
-    "Config/WebcamReader.nosdef",
-    "Config/WebcamStream.nosdef",
-    "Config/WebcamIn.nosdef",
-    "Config/WebcamOut.nosdef",
-    "Config/WebcamWriter.nosdef"
-  ],
-    "custom_types" :[
-      "Config/Webcam.fbs"
-    ],
     "binary_path": "Binaries/nosWebcam"
 }
