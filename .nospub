@@ -6,7 +6,8 @@
         "Assets/**",
         "Shaders/*.{hlsl,glsl,frag,vert,spv}",
         "Binaries/*.{dll,dylib,so,exe}",
-        "*.bat"
+        "*.bat",
+        "Types/**"
     ],
     "trigger_publish_globs": [
         "Source/**",
