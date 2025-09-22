@@ -7,7 +7,8 @@
         "Shaders/*.{hlsl,glsl,frag,vert,spv}",
         "Binaries/*.{dll,dylib,so,exe}",
         "*.bat",
-        "Types/**"
+        "Types/**",
+        "Nodes/*.nosnode"
     ],
     "trigger_publish_globs": [
         "Source/**",
