@@ -18,9 +18,10 @@
 						"show_as": "OUTPUT_PIN",
 						"can_show_as": "OUTPUT_PIN_ONLY",
 						"pin_category": "",
-						"visualizer": {},
 						"data": {
-							"external_memory": { "handle_type": 2 },
+							"external_memory": {
+								"handle_type": 2
+							},
 							"resolution": "HD",
 							"width": 1920,
 							"height": 1080,
@@ -29,7 +30,9 @@
 						},
 						"referred_by": [],
 						"def": {
-							"external_memory": { "handle_type": 2 },
+							"external_memory": {
+								"handle_type": 2
+							},
 							"resolution": "HD",
 							"width": 1920,
 							"height": 1080,
@@ -45,7 +48,9 @@
 						],
 						"live": true,
 						"contents_type": "PortalPin",
-						"contents": { "source_id": "bfab722b-f93f-4a8f-aab4-4dd5384d3228" },
+						"contents": {
+							"source_id": "bfab722b-f93f-4a8f-aab4-4dd5384d3228"
+						},
 						"orphan_state": {},
 						"description": ""
 					},
@@ -56,17 +61,21 @@
 						"show_as": "PROPERTY",
 						"can_show_as": "PROPERTY_ONLY",
 						"pin_category": "",
-						"visualizer": {
-							"type": "COMBO_BOX",
-							"name": "webcam.DeviceList.75ef9bcd-8fa3-44ec-b71d-d03af0da4cad"
-						},
 						"referred_by": [],
 						"def": "NONE",
 						"meta_data_map": [],
 						"contents_type": "PortalPin",
-						"contents": { "source_id": "0c3715aa-baae-4c43-8838-fed9b5179f57" },
+						"contents": {
+							"source_id": "0c3715aa-baae-4c43-8838-fed9b5179f57"
+						},
 						"orphan_state": {},
-						"description": ""
+						"description": "",
+						"visualizers": [
+							{
+								"type": "COMBO_BOX",
+								"name": "webcam.DeviceList.75ef9bcd-8fa3-44ec-b71d-d03af0da4cad"
+							}
+						]
 					},
 					{
 						"id": "33708fe6-1d64-4099-938e-6237c8f23137",
@@ -75,18 +84,22 @@
 						"show_as": "PROPERTY",
 						"can_show_as": "PROPERTY_ONLY",
 						"pin_category": "",
-						"visualizer": {
-							"type": "COMBO_BOX",
-							"name": "webcam.FormatList.75ef9bcd-8fa3-44ec-b71d-d03af0da4cad"
-						},
 						"data": "NONE",
 						"referred_by": [],
 						"def": "",
 						"meta_data_map": [],
 						"contents_type": "PortalPin",
-						"contents": { "source_id": "d9a959bf-3a67-4ba0-ac0e-5b4237841533" },
+						"contents": {
+							"source_id": "d9a959bf-3a67-4ba0-ac0e-5b4237841533"
+						},
 						"orphan_state": {},
-						"description": ""
+						"description": "",
+						"visualizers": [
+							{
+								"type": "COMBO_BOX",
+								"name": "webcam.FormatList.75ef9bcd-8fa3-44ec-b71d-d03af0da4cad"
+							}
+						]
 					},
 					{
 						"id": "d719bec0-48d3-4c7d-aeee-d3b4bd93849e",
@@ -95,18 +108,22 @@
 						"show_as": "PROPERTY",
 						"can_show_as": "PROPERTY_ONLY",
 						"pin_category": "",
-						"visualizer": {
-							"type": "COMBO_BOX",
-							"name": "webcam.ResolutionList.75ef9bcd-8fa3-44ec-b71d-d03af0da4cad"
-						},
 						"data": "NONE",
 						"referred_by": [],
 						"def": "",
 						"meta_data_map": [],
 						"contents_type": "PortalPin",
-						"contents": { "source_id": "cb97a52f-44aa-4a4d-91de-6676d73555d4" },
+						"contents": {
+							"source_id": "cb97a52f-44aa-4a4d-91de-6676d73555d4"
+						},
 						"orphan_state": {},
-						"description": ""
+						"description": "",
+						"visualizers": [
+							{
+								"type": "COMBO_BOX",
+								"name": "webcam.ResolutionList.75ef9bcd-8fa3-44ec-b71d-d03af0da4cad"
+							}
+						]
 					},
 					{
 						"id": "aececc99-9957-47b1-9213-caed29b16c46",
@@ -115,18 +132,22 @@
 						"show_as": "PROPERTY",
 						"can_show_as": "PROPERTY_ONLY",
 						"pin_category": "",
-						"visualizer": {
-							"type": "COMBO_BOX",
-							"name": "webcam.FrameRateList.75ef9bcd-8fa3-44ec-b71d-d03af0da4cad"
-						},
 						"data": "NONE",
 						"referred_by": [],
 						"def": "",
 						"meta_data_map": [],
 						"contents_type": "PortalPin",
-						"contents": { "source_id": "e8253283-5c1a-46a0-88f9-8e9d90250c6e" },
+						"contents": {
+							"source_id": "e8253283-5c1a-46a0-88f9-8e9d90250c6e"
+						},
 						"orphan_state": {},
-						"description": ""
+						"description": "",
+						"visualizers": [
+							{
+								"type": "COMBO_BOX",
+								"name": "webcam.FrameRateList.75ef9bcd-8fa3-44ec-b71d-d03af0da4cad"
+							}
+						]
 					},
 					{
 						"id": "6525c0b6-0f69-48a8-a378-11e28b4af8df",
@@ -135,7 +156,6 @@
 						"show_as": "PROPERTY",
 						"can_show_as": "PROPERTY_ONLY",
 						"pin_category": "",
-						"visualizer": {},
 						"data": 2,
 						"referred_by": [],
 						"min": 1,
@@ -144,7 +164,9 @@
 						"step": 1.19,
 						"meta_data_map": [],
 						"contents_type": "PortalPin",
-						"contents": { "source_id": "bc88b823-ce4f-4279-8b75-0c9589ed7626" },
+						"contents": {
+							"source_id": "bc88b823-ce4f-4279-8b75-0c9589ed7626"
+						},
 						"orphan_state": {},
 						"description": ""
 					}
@@ -168,13 +190,14 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": "",
 									"referred_by": [],
 									"def": "",
 									"meta_data_map": [],
 									"contents_type": "PortalPin",
-									"contents": { "source_id": "9a76fe02-2b36-4198-84a6-74208b3981d8" },
+									"contents": {
+										"source_id": "9a76fe02-2b36-4198-84a6-74208b3981d8"
+									},
 									"orphan_state": {},
 									"description": ""
 								}
@@ -211,7 +234,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {},
 									"referred_by": [],
 									"def": {},
@@ -228,7 +250,6 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {},
 									"referred_by": [],
 									"def": {},
@@ -245,11 +266,12 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "TRANSFER_SRC",
 										"memory_flags": "HOST_VISIBLE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -258,7 +280,9 @@
 									"def": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -276,7 +300,6 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {},
 									"referred_by": [],
 									"def": {},
@@ -293,7 +316,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "PROPERTY_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 2,
 									"referred_by": [],
 									"def": 2,
@@ -310,7 +332,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 0,
 									"referred_by": [],
 									"def": 0,
@@ -327,7 +348,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 0,
 									"referred_by": [],
 									"def": 0,
@@ -343,7 +363,9 @@
 								"y": 448.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -371,7 +393,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"x": 0,
 										"y": 0
@@ -383,7 +404,9 @@
 									},
 									"meta_data_map": [],
 									"contents_type": "PortalPin",
-									"contents": { "source_id": "faf2600c-d5fd-4731-9ed0-48bce00625d5" },
+									"contents": {
+										"source_id": "faf2600c-d5fd-4731-9ed0-48bce00625d5"
+									},
 									"orphan_state": {},
 									"description": ""
 								},
@@ -394,13 +417,14 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 0,
 									"referred_by": [],
 									"def": 0,
 									"meta_data_map": [],
 									"contents_type": "PortalPin",
-									"contents": { "source_id": "3a570145-af38-47af-9f5b-bb28e3ef4151" },
+									"contents": {
+										"source_id": "3a570145-af38-47af-9f5b-bb28e3ef4151"
+									},
 									"orphan_state": {},
 									"description": ""
 								}
@@ -424,7 +448,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": {
 													"x": 0,
 													"y": 0
@@ -447,7 +470,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": {
 													"x": 0,
 													"y": 0
@@ -476,7 +498,9 @@
 											"y": 959.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -498,7 +522,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -515,7 +538,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -531,7 +553,9 @@
 											"y": 1018.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -553,7 +577,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -570,7 +593,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [
 													"f40e9524-6537-4ba6-ad09-28c5826aadb9"
@@ -593,7 +615,9 @@
 											"y": 962.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -615,7 +639,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -632,7 +655,6 @@
 												"show_as": "PROPERTY",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 2,
 												"referred_by": [],
 												"def": 0,
@@ -649,7 +671,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -665,7 +686,9 @@
 											"y": 950.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -692,7 +715,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -709,7 +731,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -726,7 +747,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -742,7 +762,9 @@
 											"y": 960.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -769,7 +791,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": {
 													"x": 0,
 													"y": 0
@@ -792,7 +813,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -809,7 +829,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -825,7 +844,9 @@
 											"y": 958.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -847,7 +868,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -864,7 +884,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -880,7 +899,9 @@
 											"y": 914.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -952,11 +973,12 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -965,7 +987,9 @@
 									"def": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -983,7 +1007,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"x": 0,
 										"y": 0
@@ -1006,9 +1029,10 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -1017,7 +1041,9 @@
 									},
 									"referred_by": [],
 									"def": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -1038,7 +1064,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "PROPERTY_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"x": 0,
 										"y": 0
@@ -1093,9 +1118,7 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
-									"data": {
-									},
+									"data": {},
 									"referred_by": [],
 									"def": {
 										"device_name": "",
@@ -1122,7 +1145,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": "00000000-0000-0000-0000-000000000000",
 									"referred_by": [],
 									"def": "00000000-0000-0000-0000-000000000000",
@@ -1139,7 +1161,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": "",
 									"referred_by": [],
 									"def": "",
@@ -1156,7 +1177,6 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": "",
 									"referred_by": [
 										"645e6730-336e-4dc3-b498-3a8b8a567223"
@@ -1175,7 +1195,6 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"x": 0,
 										"y": 0
@@ -1200,7 +1219,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"x": 0,
 										"y": 0
@@ -1223,7 +1241,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 0,
 									"referred_by": [],
 									"def": 0,
@@ -1239,7 +1256,9 @@
 								"y": 730.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -1261,11 +1280,12 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1274,7 +1294,9 @@
 									"def": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1292,7 +1314,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"x": 0,
 										"y": 0
@@ -1315,9 +1336,10 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -1326,7 +1348,9 @@
 									},
 									"referred_by": [],
 									"def": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -1347,7 +1371,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "PROPERTY_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"x": 120,
 										"y": 135
@@ -1402,7 +1425,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": "",
 									"referred_by": [],
 									"def": "",
@@ -1419,7 +1441,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": "YUY2",
 									"referred_by": [],
 									"def": "",
@@ -1436,7 +1457,6 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": false,
 									"referred_by": [
 										"fb8c4bbb-ad25-466e-a147-14d168e8ebff"
@@ -1454,7 +1474,9 @@
 								"y": 198.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -1482,7 +1504,6 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {},
 									"referred_by": [],
 									"def": {},
@@ -1500,7 +1521,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "PROPERTY_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 0,
 									"referred_by": [],
 									"def": 0,
@@ -1516,7 +1536,9 @@
 								"y": 542.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -1538,11 +1560,12 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1551,7 +1574,9 @@
 									"def": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1569,7 +1594,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {},
 									"referred_by": [],
 									"def": {},
@@ -1586,11 +1610,12 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1599,7 +1624,9 @@
 									"def": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1616,7 +1643,9 @@
 								"y": 576.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -1644,7 +1673,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {},
 									"referred_by": [],
 									"def": {},
@@ -1661,7 +1689,6 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {},
 									"referred_by": [],
 									"def": {},
@@ -1678,9 +1705,7 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
-									"data": {
-									},
+									"data": {},
 									"referred_by": [],
 									"def": {
 										"device_name": "",
@@ -1707,10 +1732,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "PROPERTY_ONLY",
 									"pin_category": "",
-									"visualizer": {
-										"type": "COMBO_BOX",
-										"name": "webcam.DeviceList.51b8c366-91a9-4b09-8104-3c889b4570e6"
-									},
 									"referred_by": [
 										"f6fc788a-bd72-47be-a5b4-ee4619198566"
 									],
@@ -1719,7 +1740,13 @@
 									"contents_type": "JobPin",
 									"contents": {},
 									"orphan_state": {},
-									"description": ""
+									"description": "",
+									"visualizers": [
+										{
+											"type": "COMBO_BOX",
+											"name": "webcam.DeviceList.51b8c366-91a9-4b09-8104-3c889b4570e6"
+										}
+									]
 								},
 								{
 									"id": "d9a959bf-3a67-4ba0-ac0e-5b4237841533",
@@ -1728,10 +1755,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "PROPERTY_ONLY",
 									"pin_category": "",
-									"visualizer": {
-										"type": "COMBO_BOX",
-										"name": "webcam.FormatList.51b8c366-91a9-4b09-8104-3c889b4570e6"
-									},
 									"data": "NONE",
 									"referred_by": [
 										"33708fe6-1d64-4099-938e-6237c8f23137"
@@ -1741,7 +1764,13 @@
 									"contents_type": "JobPin",
 									"contents": {},
 									"orphan_state": {},
-									"description": ""
+									"description": "",
+									"visualizers": [
+										{
+											"type": "COMBO_BOX",
+											"name": "webcam.FormatList.51b8c366-91a9-4b09-8104-3c889b4570e6"
+										}
+									]
 								},
 								{
 									"id": "cb97a52f-44aa-4a4d-91de-6676d73555d4",
@@ -1750,10 +1779,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "PROPERTY_ONLY",
 									"pin_category": "",
-									"visualizer": {
-										"type": "COMBO_BOX",
-										"name": "webcam.ResolutionList.51b8c366-91a9-4b09-8104-3c889b4570e6"
-									},
 									"data": "NONE",
 									"referred_by": [
 										"d719bec0-48d3-4c7d-aeee-d3b4bd93849e"
@@ -1763,7 +1788,13 @@
 									"contents_type": "JobPin",
 									"contents": {},
 									"orphan_state": {},
-									"description": ""
+									"description": "",
+									"visualizers": [
+										{
+											"type": "COMBO_BOX",
+											"name": "webcam.ResolutionList.51b8c366-91a9-4b09-8104-3c889b4570e6"
+										}
+									]
 								},
 								{
 									"id": "e8253283-5c1a-46a0-88f9-8e9d90250c6e",
@@ -1772,10 +1803,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "PROPERTY_ONLY",
 									"pin_category": "",
-									"visualizer": {
-										"type": "COMBO_BOX",
-										"name": "webcam.FrameRateList.51b8c366-91a9-4b09-8104-3c889b4570e6"
-									},
 									"data": "NONE",
 									"referred_by": [
 										"aececc99-9957-47b1-9213-caed29b16c46"
@@ -1785,7 +1812,13 @@
 									"contents_type": "JobPin",
 									"contents": {},
 									"orphan_state": {},
-									"description": ""
+									"description": "",
+									"visualizers": [
+										{
+											"type": "COMBO_BOX",
+											"name": "webcam.FrameRateList.51b8c366-91a9-4b09-8104-3c889b4570e6"
+										}
+									]
 								}
 							],
 							"pos": {
@@ -1793,7 +1826,9 @@
 								"y": 589.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -1820,11 +1855,12 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "TRANSFER_SRC",
 										"memory_flags": "HOST_VISIBLE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1833,7 +1869,9 @@
 									"def": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1851,11 +1889,12 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1864,7 +1903,9 @@
 									"def": {
 										"size_in_bytes": 0,
 										"alignment": 0,
-										"external_memory": { "handle_type": 0 },
+										"external_memory": {
+											"handle_type": 0
+										},
 										"usage": "NONE",
 										"memory_flags": "NONE",
 										"element_type": "ELEMENT_TYPE_UNDEFINED"
@@ -1882,9 +1923,7 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
-									"data": {
-									},
+									"data": {},
 									"referred_by": [],
 									"def": {
 										"device_name": "",
@@ -1910,7 +1949,9 @@
 								"y": 585.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -1937,7 +1978,6 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"x": 0,
 										"y": 0
@@ -1949,7 +1989,9 @@
 									},
 									"meta_data_map": [],
 									"contents_type": "PortalPin",
-									"contents": { "source_id": "9f10ce6c-dd16-4952-806d-d1a816bae59d" },
+									"contents": {
+										"source_id": "9f10ce6c-dd16-4952-806d-d1a816bae59d"
+									},
 									"orphan_state": {},
 									"description": ""
 								}
@@ -1986,7 +2028,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {},
 									"referred_by": [],
 									"def": {},
@@ -2003,7 +2044,6 @@
 									"show_as": "PROPERTY",
 									"can_show_as": "PROPERTY_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 2,
 									"referred_by": [
 										"6525c0b6-0f69-48a8-a378-11e28b4af8df"
@@ -2025,9 +2065,10 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2036,7 +2077,9 @@
 									},
 									"referred_by": [],
 									"def": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2057,9 +2100,10 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2068,7 +2112,9 @@
 									},
 									"referred_by": [],
 									"def": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2089,7 +2135,9 @@
 								"y": 551.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -2117,9 +2165,10 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2128,7 +2177,9 @@
 									},
 									"referred_by": [],
 									"def": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2149,9 +2200,10 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2162,7 +2214,9 @@
 										"05d1a2f0-7705-4300-97e7-f850e4ed58b4"
 									],
 									"def": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2187,7 +2241,9 @@
 								"y": 707.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -2209,7 +2265,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": false,
 									"referred_by": [],
 									"def": false,
@@ -2226,7 +2281,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 0,
 									"referred_by": [],
 									"def": 0,
@@ -2243,7 +2297,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 0,
 									"referred_by": [],
 									"def": 0,
@@ -2260,7 +2313,6 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 0,
 									"referred_by": [],
 									"def": 0,
@@ -2276,7 +2328,9 @@
 								"y": 355.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
@@ -2298,7 +2352,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
 										"x": 0,
 										"y": 0
@@ -2310,7 +2363,9 @@
 									},
 									"meta_data_map": [],
 									"contents_type": "PortalPin",
-									"contents": { "source_id": "9234a3a1-fb68-436d-aa30-0e53ac59e59e" },
+									"contents": {
+										"source_id": "9234a3a1-fb68-436d-aa30-0e53ac59e59e"
+									},
 									"orphan_state": {},
 									"description": ""
 								},
@@ -2321,13 +2376,14 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": 0,
 									"referred_by": [],
 									"def": 0,
 									"meta_data_map": [],
 									"contents_type": "PortalPin",
-									"contents": { "source_id": "a50b66b6-8e14-4f11-85de-f1036559280c" },
+									"contents": {
+										"source_id": "a50b66b6-8e14-4f11-85de-f1036559280c"
+									},
 									"orphan_state": {},
 									"description": ""
 								}
@@ -2351,7 +2407,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -2368,7 +2423,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0.0,
 												"referred_by": [],
 												"def": 0.0,
@@ -2384,7 +2438,9 @@
 											"y": 974.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -2406,7 +2462,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": {
 													"x": 0,
 													"y": 0
@@ -2429,7 +2484,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": {
 													"x": 0,
 													"y": 0
@@ -2458,7 +2512,9 @@
 											"y": 959.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -2480,7 +2536,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -2497,7 +2552,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [
 													"db4e0dce-80a3-47de-8fbe-24856a7c8150"
@@ -2520,7 +2574,9 @@
 											"y": 962.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -2542,7 +2598,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": {
 													"x": 0,
 													"y": 0
@@ -2565,7 +2620,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -2582,7 +2636,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -2598,7 +2651,9 @@
 											"y": 961.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -2620,7 +2675,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -2637,7 +2691,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0.0,
 												"referred_by": [],
 												"def": 0.0,
@@ -2653,7 +2706,9 @@
 											"y": 935.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -2675,7 +2730,6 @@
 												"show_as": "PROPERTY",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": "A * B * 1.5",
 												"referred_by": [],
 												"def": "",
@@ -2692,7 +2746,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0.0,
 												"referred_by": [],
 												"def": 0.0,
@@ -2709,7 +2762,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0.0,
 												"referred_by": [],
 												"def": 0.0,
@@ -2726,7 +2778,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0.0,
 												"referred_by": [],
 												"def": 0.0,
@@ -2742,12 +2793,16 @@
 											"y": 962.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
 										"status_messages": [
-											{ "text": "A * B * 1.5" }
+											{
+												"text": "A * B * 1.5"
+											}
 										],
 										"meta_data_map": [
 											{
@@ -2771,7 +2826,6 @@
 												"show_as": "INPUT_PIN",
 												"can_show_as": "INPUT_PIN_OR_PROPERTY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0.0,
 												"referred_by": [],
 												"def": 0.0,
@@ -2788,7 +2842,6 @@
 												"show_as": "OUTPUT_PIN",
 												"can_show_as": "OUTPUT_PIN_ONLY",
 												"pin_category": "",
-												"visualizer": {},
 												"data": 0,
 												"referred_by": [],
 												"def": 0,
@@ -2804,7 +2857,9 @@
 											"y": 962.0
 										},
 										"contents_type": "Job",
-										"contents": { "type": "" },
+										"contents": {
+											"type": ""
+										},
 										"app_key": "",
 										"functions": [],
 										"function_category": "Default Node",
@@ -2876,13 +2931,14 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": false,
 									"referred_by": [],
 									"def": false,
 									"meta_data_map": [],
 									"contents_type": "PortalPin",
-									"contents": { "source_id": "5a8c4441-e4ea-4112-b5ae-91763e643eb2" },
+									"contents": {
+										"source_id": "5a8c4441-e4ea-4112-b5ae-91763e643eb2"
+									},
 									"orphan_state": {},
 									"description": ""
 								}
@@ -2919,7 +2975,6 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_OR_PROPERTY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": false,
 									"referred_by": [],
 									"def": false,
@@ -2936,9 +2991,10 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2947,7 +3003,9 @@
 									},
 									"referred_by": [],
 									"def": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2967,9 +3025,10 @@
 									"show_as": "INPUT_PIN",
 									"can_show_as": "INPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2978,7 +3037,9 @@
 									},
 									"referred_by": [],
 									"def": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -2998,9 +3059,10 @@
 									"show_as": "OUTPUT_PIN",
 									"can_show_as": "OUTPUT_PIN_ONLY",
 									"pin_category": "",
-									"visualizer": {},
 									"data": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -3009,7 +3071,9 @@
 									},
 									"referred_by": [],
 									"def": {
-										"external_memory": { "handle_type": 2 },
+										"external_memory": {
+											"handle_type": 2
+										},
 										"resolution": "HD",
 										"width": 1920,
 										"height": 1080,
@@ -3028,7 +3092,9 @@
 								"y": 725.0
 							},
 							"contents_type": "Job",
-							"contents": { "type": "" },
+							"contents": {
+								"type": ""
+							},
 							"app_key": "",
 							"functions": [],
 							"function_category": "Default Node",
