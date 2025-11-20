@@ -13,7 +13,7 @@
 #include <mfapi.h>
 
 #include "Nodos/Plugin.hpp"
-#include "Webcam_generated.h"
+#include "nosWebcam/Webcam_generated.h"
 
 #include <softcam.h>
 

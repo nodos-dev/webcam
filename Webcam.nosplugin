@@ -13,11 +13,11 @@
         },
         {
           "name": "nos.mediaio",
-          "version": "3.1"
+          "version": "3.3.1"
         },
         {
           "name": "nos.utilities",
-          "version": "3.29"
+          "version": "3.31"
         },
         {
           "name": "nos.math",
@@ -34,5 +34,6 @@
       ],
       "category": "Media I/O"
     },
-    "binary_path": "Binaries/nosWebcam"
+    "binary_path": "Binaries/nosWebcam",
+    "sdk_version": "40.0"
 }
