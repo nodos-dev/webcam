@@ -41,5 +41,7 @@ list(APPEND INCLUDE_FOLDERS
 nos_add_plugin("nosWebcam" "${DEPENDENCIES}" "${INCLUDE_FOLDERS}")
 set_target_properties(nosWebcam PROPERTIES CXX_STANDARD 23)
 
+target_compile_definitions(nosWebcam PRIVATE "-DNOMINMAX")
+
 # Project generation
 nos_group_targets("nosWebcam" "NOS Plugins")
