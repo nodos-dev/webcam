@@ -4,7 +4,7 @@
 			"class_name": "WebcamStream",
 			"menu_info": {
 				"category": "Device|Webcam",
-				"display_name": "WebcamStream"
+				"display_name": "Webcam Stream"
 			},
 			"node": {
 				"class_name": "WebcamStream",

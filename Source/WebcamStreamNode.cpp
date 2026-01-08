@@ -51,9 +51,9 @@ struct WebcamStreamNode : public nos::NodeContext
 		nosOrphanState orphan{ .Type = NOS_ORPHAN_STATE_TYPE_ORPHAN, .Message = "Channel is not open" };
 		nosEngine.SetItemOrphanState(StreamPinId, &orphan);
 
-		AddPinValueWatcher(NSN_Device, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
+		AddPinValueWatcher<char>(NSN_Device, [this](const char* newVal, std::optional<const char*> oldValue)
 			{
-				DevicePin = InterpretPinValue<char>(newVal);
+				DevicePin = newVal;
 				SelectedDevice = std::nullopt;
 				CurDeviceFormats.clear();
 				if (DevicePin != "NONE")
@@ -82,9 +82,9 @@ struct WebcamStreamNode : public nos::NodeContext
 				UpdateAfter(ChangedPinType::Device, !oldValue);
 			});
 
-		AddPinValueWatcher(NSN_Format, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
+		AddPinValueWatcher<char>(NSN_Format, [this](const char* newVal, std::optional<const char*> oldValue)
 			{
-				FormatPin = InterpretPinValue<char>(newVal);
+				FormatPin = newVal;
 				SelectedFormatGuid = std::nullopt;
 				if (FormatPin != "NONE")
 				{
@@ -106,9 +106,9 @@ struct WebcamStreamNode : public nos::NodeContext
 				UpdateAfter(ChangedPinType::FormatName, !oldValue);
 			});
 
-		AddPinValueWatcher(NSN_Resolution, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
+		AddPinValueWatcher<char>(NSN_Resolution, [this](const char* newVal, std::optional<const char*> oldValue)
 			{
-				ResolutionPin = InterpretPinValue<char>(newVal);
+				ResolutionPin = newVal;
 				SelectedResolution = std::nullopt;
 				if (ResolutionPin != "NONE")
 				{
@@ -130,9 +130,9 @@ struct WebcamStreamNode : public nos::NodeContext
 				UpdateAfter(ChangedPinType::Resolution, !oldValue);
 			});
 
-		AddPinValueWatcher(NSN_FrameRate, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
+		AddPinValueWatcher<char>(NSN_FrameRate, [this](const char* newVal, std::optional<const char*> oldValue)
 			{
-				FrameRatePin = InterpretPinValue<char>(newVal);
+				FrameRatePin = newVal;
 				SelectedFrameRate = std::nullopt;
 				if (FrameRatePin != "NONE")
 				{
@@ -341,8 +341,6 @@ struct WebcamStreamNode : public nos::NodeContext
 	std::string FrameRatePin = "NONE";
 	nos::uuid StreamPinId;
 
-	nosResourceShareInfo _nosIntermediateTexture = {};
-	nosResourceShareInfo _nosMemoryBuffer = {};
 	std::vector<WebcamDevice> DeviceList;
 	std::vector<FormatInfo> CurDeviceFormats;
 };

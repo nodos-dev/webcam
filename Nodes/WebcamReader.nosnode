@@ -4,7 +4,7 @@
 			"class_name": "WebcamReader",
 			"menu_info": {
 				"category": "Device|Webcam",
-				"display_name": "WebcamReader"
+				"display_name": "Webcam Reader"
 			},
 			"node": {
 				"class_name": "WebcamReader",

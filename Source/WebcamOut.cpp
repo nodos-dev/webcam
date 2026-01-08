@@ -46,17 +46,17 @@ struct WebcamWriterNode : public NodeContext
 
 	nosResult OnCreate(nosFbNodePtr node) override
 	{
-		AddPinValueWatcher(NSN_FrameRate, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
+		AddPinValueWatcher<float>(NSN_FrameRate, [this](const float* newVal, std::optional<const float*> oldValue)
 			{
-				FrameRate = *InterpretPinValue<float>(newVal);
+				FrameRate = *newVal;
 			});
-		AddPinValueWatcher(NSN_Resolution, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
+		AddPinValueWatcher<nos::fb::vec2u>(NSN_Resolution, [this](const nos::fb::vec2u* newVal, std::optional<const nos::fb::vec2u*> oldValue)
 			{
-				Resolution = *InterpretPinValue<nos::fb::vec2u>(newVal);
+				Resolution = *newVal;
 			});
-		AddPinValueWatcher(NSN_Format, [this](nos::Buffer const& newVal, std::optional<nos::Buffer> oldValue)
+		AddPinValueWatcher<WebcamTextureFormat>(NSN_Format, [this](const WebcamTextureFormat* newVal, std::optional<const WebcamTextureFormat*> oldValue)
 			{
-				Format = *InterpretPinValue<WebcamTextureFormat>(newVal);
+				Format = *newVal;
 			});
 		RecreateCamera();
 		return NOS_RESULT_SUCCESS;
@@ -106,35 +106,30 @@ struct WebcamWriterNode : public NodeContext
 				ActiveNodeId = {};
 	}
 
-	nosResult ExecuteNode(nosNodeExecuteParams* params) override
+	nosResult ExecuteNode(nos::NodeExecuteParams const& params) override
 	{
 		if(!CamHandle || IsCameraDifferent())
 			return NOS_RESULT_FAILED;
-		nos::NodeExecuteParams execParams(params);
 		unsigned int outBufferSize = Resolution.x() * Resolution.y() * getFormatSizePerPixel(Format);
 		
-		nosResourceShareInfo inputBuffer{};
-		for (size_t i = 0; i < params->PinCount; ++i)
+		auto inputBuffer = params.GetPinObject<sys::vulkan::Buffer>(NSN_Source);
+		auto inputBufferInfo = sys::vulkan::GetResourceInfo(inputBuffer);
+		if (!inputBuffer || !inputBufferInfo)
 		{
-			auto& pin = *params->Pins[i];
-			if (pin.Name == NSN_Source)
-				inputBuffer = vkss::ConvertToResourceInfo(*InterpretPinValue<sys::vulkan::Buffer>(*pin.Data));
-		}
-
-		if (!inputBuffer.Memory.Handle || inputBuffer.Memory.Size < outBufferSize)
-		{
-			nosEngine.LogE("WebcamWriter: Invalid input buffer");
+			nosEngine.LogE("WebcamWriter: Input buffer is null");
 			return NOS_RESULT_FAILED;
 		}
 
-		auto buffer = nosVulkan->Map(&inputBuffer);
+		if (!inputBufferInfo->Size < outBufferSize)
+		{
+			nosEngine.LogE("WebcamWriter: Input buffer size is smaller than required");
+			return NOS_RESULT_FAILED;
+		}
+
+		auto buffer = nosVulkan->Map(inputBuffer);
 		scSendFrame(reinterpret_cast<scCamera>(CamHandle), buffer);
 
-		nosScheduleNodeParams schedule{
-			.NodeId = NodeId,
-			.AddScheduleCount = 1
-		};
-		nosEngine.ScheduleNode(&schedule);
+		SendScheduleRequest(1);
 		return NOS_RESULT_SUCCESS;
 	}
 

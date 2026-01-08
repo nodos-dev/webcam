@@ -8,7 +8,7 @@
 			},
 			"node": {
 				"id": "94b7791d-7622-4564-9cb3-87835cb30466",
-				"name": "Webcam Output",
+				"name": "Webcam Out",
 				"class_name": "WebcamOut",
 				"pins": [
 					{

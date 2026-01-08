@@ -4,7 +4,7 @@
 			"class_name": "WebcamWriter",
 			"menu_info": {
 				"category": "Device|Webcam",
-				"display_name": "WebcamWriter"
+				"display_name": "Webcam Writer"
 			},
 			"node": {
 				"class_name": "WebcamWriter",

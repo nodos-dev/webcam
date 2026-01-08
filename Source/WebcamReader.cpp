@@ -15,14 +15,12 @@ struct WebcamReaderNode : public NodeContext
 {
 	using NodeContext::NodeContext;
 	// Execution
-	virtual nosResult ExecuteNode(nosNodeExecuteParams* params)
+	virtual nosResult ExecuteNode(nos::NodeExecuteParams const& params)
 	{
-		nos::NodeExecuteParams execParams(params);
-
-		auto* streamInfo = execParams.GetPinData<webcam::WebcamStreamInfo>(NSN_StreamInfo);
+		auto* streamInfo = params.GetPinData<webcam::WebcamStreamInfo>(NSN_StreamInfo);
 		if (!streamInfo || !streamInfo->id())
 			return NOS_RESULT_FAILED;
-		
+
 		auto stream = WebcamStreamManager::GetInstance().GetStream(*streamInfo->id());
 		if(!stream)
 			return NOS_RESULT_FAILED;
@@ -34,19 +32,25 @@ struct WebcamReaderNode : public NodeContext
 			if (sample.Size == 0)
 				return NOS_RESULT_FAILED;
 		}
-		nosResourceShareInfo bufToWrite = vkss::ConvertToResourceInfo(*execParams.GetPinData<nos::sys::vulkan::Buffer>(NSN_BufferToWrite));
-		if (bufToWrite.Info.Buffer.Size != sample.Size)
+		auto bufToWrite = params.GetPinObject(NSN_BufferToWrite);
+		auto bufInfo = sys::vulkan::GetResourceInfo(bufToWrite);
+		if (!bufInfo)
+		{
+			nosEngine.LogE("Failed to get buffer info!");
+			return NOS_RESULT_FAILED;
+		}
+		if (bufInfo->Buffer.Size != sample.Size)
 			nosEngine.LogE("Buffer size mismatch!");
-		
-		uint8_t* mapped = nosVulkan->Map(&bufToWrite);
+
+		uint8_t* mapped = nosVulkan->Map(bufToWrite);
 		if (mapped == nullptr) 
 		{
 			nosEngine.LogE("Failed to map buffer!");
 			return NOS_RESULT_FAILED;
 		}
-		
-		memcpy(mapped, sample.Data, std::min(uint32_t(sample.Size), bufToWrite.Info.Buffer.Size));
-		nosEngine.SetPinValue(execParams[NSN_Output].Id, nos::Buffer::From(vkss::ConvertBufferInfo(bufToWrite)));
+
+		memcpy(mapped, sample.Data, std::min(uint32_t(sample.Size), bufInfo->Buffer.Size));
+		SetPinObject(NSN_Output, bufToWrite);
 		return NOS_RESULT_SUCCESS;
 	}
 };

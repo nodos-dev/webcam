@@ -2,39 +2,39 @@
 	"info": {
 		"id": {
 			"name": "nos.webcam",
-			"version": "2.0.0"
+			"version": "3.0.0"
 		},
 		"display_name": "Webcam",
 		"description": "Webcam plugin.",
 		"dependencies": [
 			{
 				"name": "nos.sys.vulkan",
-				"version": "7.1"
+				"version": "8.0"
 			},
 			{
 				"name": "nos.mediaio",
-				"version": "3.4"
+				"version": "4.0"
 			},
 			{
 				"name": "nos.utilities",
-				"version": "3.31"
+				"version": "4.0"
 			},
 			{
 				"name": "nos.math",
-				"version": "1.24"
+				"version": "2.0"
 			},
 			{
 				"name": "nos.reflect",
-				"version": "2.1"
+				"version": "3.0"
 			},
 			{
 				"name": "nos.str",
-				"version": "0.12"
+				"version": "1.0"
 			}
 		],
 		"category": "Media I/O"
 	},
 	"binary_path": "Binaries/nosWebcam",
-	"sdk_version": "40.0",
+	"sdk_version": "41.0",
 	"schema_version": "1.4-v1"
 }
