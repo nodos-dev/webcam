@@ -17,7 +17,7 @@ struct WebcamReaderNode : public NodeContext
 	// Execution
 	virtual nosResult ExecuteNode(nos::NodeExecuteParams const& params)
 	{
-		auto* streamInfo = params.GetPinData<webcam::WebcamStreamInfo>(NSN_StreamInfo);
+		auto* streamInfo = params.GetPinValue<webcam::WebcamStreamInfo>(NSN_StreamInfo);
 		if (!streamInfo || !streamInfo->id())
 			return NOS_RESULT_FAILED;
 
